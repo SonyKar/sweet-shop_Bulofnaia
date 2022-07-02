@@ -1,0 +1,10 @@
+C:\Users\sa_ca\source\repos\Bulofnaia\bin\Debug\Bulofnaia.exe.config
+C:\Users\sa_ca\source\repos\Bulofnaia\bin\Debug\Bulofnaia.exe
+C:\Users\sa_ca\source\repos\Bulofnaia\bin\Debug\Bulofnaia.pdb
+C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.csproj.AssemblyReference.cache
+C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.csproj.SuggestedBindingRedirects.cache
+C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.Properties.Resources.resources
+C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.csproj.GenerateResource.cache
+C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.csproj.CoreCompileInputs.cache
+C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.exe
+C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.pdb

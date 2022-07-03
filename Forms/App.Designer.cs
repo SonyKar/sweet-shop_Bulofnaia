@@ -1,6 +1,6 @@
 ﻿namespace Bulofnaia.Forms
 {
-    partial class Form1
+    partial class App
     {
         /// <summary>
         /// Required designer variable.
@@ -32,14 +32,15 @@
             this.queueLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.queueHeaderLabel = new System.Windows.Forms.Label();
             this.queueTable = new System.Windows.Forms.TableLayoutPanel();
+            this.dateQueueHeader = new System.Windows.Forms.Label();
             this.idLabel = new System.Windows.Forms.Label();
             this.nameLabel = new System.Windows.Forms.Label();
             this.resourcesLable = new System.Windows.Forms.Label();
             this.actionLabel = new System.Windows.Forms.Label();
-            this.menuButtonLayout = new System.Windows.Forms.FlowLayoutPanel();
-            this.menuHeaderLabel = new System.Windows.Forms.Label();
+            this.menuLayout = new System.Windows.Forms.TableLayoutPanel();
             this.newRequestPageButton = new System.Windows.Forms.Button();
             this.queuePageButton = new System.Windows.Forms.Button();
+            this.menuHeaderLabel = new System.Windows.Forms.Label();
             this.availableResourcesPageButton = new System.Windows.Forms.Button();
             this.addResourcesPageButton = new System.Windows.Forms.Button();
             this.addResourceLayout = new System.Windows.Forms.FlowLayoutPanel();
@@ -52,7 +53,7 @@
             this.appLayout.SuspendLayout();
             this.queueLayout.SuspendLayout();
             this.queueTable.SuspendLayout();
-            this.menuButtonLayout.SuspendLayout();
+            this.menuLayout.SuspendLayout();
             this.addResourceLayout.SuspendLayout();
             this.availableResourceLayout.SuspendLayout();
             this.createRequestLayout.SuspendLayout();
@@ -64,19 +65,10 @@
             this.appLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.appLayout.BackColor = System.Drawing.Color.WhiteSmoke;
             this.appLayout.ColumnCount = 2;
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.14213F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.85786F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.appLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
             this.appLayout.Controls.Add(this.queueLayout, 1, 0);
-            this.appLayout.Controls.Add(this.menuButtonLayout, 0, 0);
+            this.appLayout.Controls.Add(this.menuLayout, 0, 0);
             this.appLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.appLayout.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
             this.appLayout.Location = new System.Drawing.Point(0, 0);
@@ -94,16 +86,16 @@
             this.queueLayout.Controls.Add(this.queueTable);
             this.queueLayout.Dock = System.Windows.Forms.DockStyle.Fill;
             this.queueLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.queueLayout.Location = new System.Drawing.Point(312, 3);
+            this.queueLayout.Location = new System.Drawing.Point(239, 3);
             this.queueLayout.Name = "queueLayout";
-            this.queueLayout.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.queueLayout.Size = new System.Drawing.Size(867, 667);
+            this.queueLayout.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.queueLayout.Size = new System.Drawing.Size(940, 667);
             this.queueLayout.TabIndex = 3;
             // 
             // queueHeaderLabel
             // 
             this.queueHeaderLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.queueHeaderLabel.Location = new System.Drawing.Point(13, 10);
+            this.queueHeaderLabel.Location = new System.Drawing.Point(8, 10);
             this.queueHeaderLabel.Margin = new System.Windows.Forms.Padding(3, 10, 3, 40);
             this.queueHeaderLabel.Name = "queueHeaderLabel";
             this.queueHeaderLabel.Size = new System.Drawing.Size(302, 46);
@@ -116,34 +108,35 @@
             this.queueTable.AutoSize = true;
             this.queueTable.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.queueTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.queueTable.ColumnCount = 4;
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.queueTable.ColumnCount = 5;
+            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 7.65111F));
+            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25.13936F));
+            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 43.72062F));
+            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.772F));
+            this.queueTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 9.716908F));
+            this.queueTable.Controls.Add(this.dateQueueHeader, 3, 0);
             this.queueTable.Controls.Add(this.idLabel, 0, 0);
             this.queueTable.Controls.Add(this.nameLabel, 1, 0);
             this.queueTable.Controls.Add(this.resourcesLable, 2, 0);
-            this.queueTable.Controls.Add(this.actionLabel, 3, 0);
-            this.queueTable.Location = new System.Drawing.Point(13, 99);
+            this.queueTable.Controls.Add(this.actionLabel, 4, 0);
+            this.queueTable.Dock = System.Windows.Forms.DockStyle.Top;
+            this.queueTable.Location = new System.Drawing.Point(8, 99);
             this.queueTable.Name = "queueTable";
             this.queueTable.RowCount = 1;
-            this.queueTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.queueTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.queueTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.queueTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.queueTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.queueTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.queueTable.Size = new System.Drawing.Size(851, 52);
+            this.queueTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.queueTable.Size = new System.Drawing.Size(929, 52);
             this.queueTable.TabIndex = 2;
+            // 
+            // dateQueueHeader
+            // 
+            this.dateQueueHeader.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dateQueueHeader.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
+            this.dateQueueHeader.Location = new System.Drawing.Point(712, 1);
+            this.dateQueueHeader.Name = "dateQueueHeader";
+            this.dateQueueHeader.Size = new System.Drawing.Size(121, 50);
+            this.dateQueueHeader.TabIndex = 4;
+            this.dateQueueHeader.Text = "Дата";
+            this.dateQueueHeader.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // idLabel
             // 
@@ -151,7 +144,7 @@
             this.idLabel.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.idLabel.Location = new System.Drawing.Point(4, 1);
             this.idLabel.Name = "idLabel";
-            this.idLabel.Size = new System.Drawing.Size(53, 50);
+            this.idLabel.Size = new System.Drawing.Size(64, 50);
             this.idLabel.TabIndex = 0;
             this.idLabel.Text = "ID";
             this.idLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -160,9 +153,9 @@
             // 
             this.nameLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nameLabel.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
-            this.nameLabel.Location = new System.Drawing.Point(64, 1);
+            this.nameLabel.Location = new System.Drawing.Point(75, 1);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(188, 50);
+            this.nameLabel.Size = new System.Drawing.Size(226, 50);
             this.nameLabel.TabIndex = 1;
             this.nameLabel.Text = "Название";
             this.nameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -171,9 +164,9 @@
             // 
             this.resourcesLable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.resourcesLable.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
-            this.resourcesLable.Location = new System.Drawing.Point(259, 1);
+            this.resourcesLable.Location = new System.Drawing.Point(308, 1);
             this.resourcesLable.Name = "resourcesLable";
-            this.resourcesLable.Size = new System.Drawing.Size(417, 50);
+            this.resourcesLable.Size = new System.Drawing.Size(397, 50);
             this.resourcesLable.TabIndex = 2;
             this.resourcesLable.Text = "Ресуры";
             this.resourcesLable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -182,57 +175,49 @@
             // 
             this.actionLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.actionLabel.Font = new System.Drawing.Font("Calibri", 10.8F, System.Drawing.FontStyle.Bold);
-            this.actionLabel.Location = new System.Drawing.Point(683, 1);
+            this.actionLabel.Location = new System.Drawing.Point(840, 1);
             this.actionLabel.Name = "actionLabel";
-            this.actionLabel.Size = new System.Drawing.Size(164, 50);
+            this.actionLabel.Size = new System.Drawing.Size(85, 50);
             this.actionLabel.TabIndex = 3;
-            this.actionLabel.Text = "Действие";
+            this.actionLabel.Text = "#";
             this.actionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // menuButtonLayout
+            // menuLayout
             // 
-            this.menuButtonLayout.AutoScroll = true;
-            this.menuButtonLayout.AutoSize = true;
-            this.menuButtonLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.menuButtonLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
-            this.menuButtonLayout.Controls.Add(this.menuHeaderLabel);
-            this.menuButtonLayout.Controls.Add(this.newRequestPageButton);
-            this.menuButtonLayout.Controls.Add(this.queuePageButton);
-            this.menuButtonLayout.Controls.Add(this.availableResourcesPageButton);
-            this.menuButtonLayout.Controls.Add(this.addResourcesPageButton);
-            this.menuButtonLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menuButtonLayout.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.menuButtonLayout.Location = new System.Drawing.Point(3, 3);
-            this.menuButtonLayout.Name = "menuButtonLayout";
-            this.menuButtonLayout.Size = new System.Drawing.Size(303, 667);
-            this.menuButtonLayout.TabIndex = 1;
-            this.menuButtonLayout.WrapContents = false;
-            // 
-            // menuHeaderLabel
-            // 
-            this.menuHeaderLabel.AutoSize = true;
-            this.menuHeaderLabel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.menuHeaderLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuHeaderLabel.Location = new System.Drawing.Point(3, 0);
-            this.menuHeaderLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 40);
-            this.menuHeaderLabel.Name = "menuHeaderLabel";
-            this.menuHeaderLabel.Size = new System.Drawing.Size(163, 28);
-            this.menuHeaderLabel.TabIndex = 0;
-            this.menuHeaderLabel.Text = "Меню";
-            this.menuHeaderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.menuLayout.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(225)))), ((int)(((byte)(225)))));
+            this.menuLayout.ColumnCount = 1;
+            this.menuLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.menuLayout.Controls.Add(this.newRequestPageButton, 0, 1);
+            this.menuLayout.Controls.Add(this.queuePageButton, 0, 2);
+            this.menuLayout.Controls.Add(this.menuHeaderLabel, 0, 0);
+            this.menuLayout.Controls.Add(this.availableResourcesPageButton, 0, 3);
+            this.menuLayout.Controls.Add(this.addResourcesPageButton, 0, 4);
+            this.menuLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuLayout.Location = new System.Drawing.Point(3, 3);
+            this.menuLayout.Name = "menuLayout";
+            this.menuLayout.Padding = new System.Windows.Forms.Padding(5);
+            this.menuLayout.RowCount = 6;
+            this.menuLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.menuLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.menuLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.menuLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.menuLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.menuLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.66667F));
+            this.menuLayout.Size = new System.Drawing.Size(230, 667);
+            this.menuLayout.TabIndex = 4;
             // 
             // newRequestPageButton
             // 
             this.newRequestPageButton.AutoSize = true;
             this.newRequestPageButton.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.newRequestPageButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.newRequestPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.newRequestPageButton.FlatAppearance.BorderSize = 0;
             this.newRequestPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.newRequestPageButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newRequestPageButton.Location = new System.Drawing.Point(3, 71);
+            this.newRequestPageButton.Location = new System.Drawing.Point(8, 117);
             this.newRequestPageButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.newRequestPageButton.Name = "newRequestPageButton";
-            this.newRequestPageButton.Size = new System.Drawing.Size(163, 64);
+            this.newRequestPageButton.Size = new System.Drawing.Size(214, 86);
             this.newRequestPageButton.TabIndex = 1;
             this.newRequestPageButton.Text = "Добавить заявку";
             this.newRequestPageButton.UseVisualStyleBackColor = false;
@@ -241,30 +226,43 @@
             // queuePageButton
             // 
             this.queuePageButton.BackColor = System.Drawing.Color.White;
-            this.queuePageButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.queuePageButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.queuePageButton.FlatAppearance.BorderSize = 0;
             this.queuePageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.queuePageButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.queuePageButton.Location = new System.Drawing.Point(3, 158);
+            this.queuePageButton.Location = new System.Drawing.Point(8, 226);
             this.queuePageButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.queuePageButton.Name = "queuePageButton";
-            this.queuePageButton.Size = new System.Drawing.Size(163, 62);
+            this.queuePageButton.Size = new System.Drawing.Size(214, 86);
             this.queuePageButton.TabIndex = 1;
             this.queuePageButton.Text = "Очередь";
             this.queuePageButton.UseVisualStyleBackColor = false;
             this.queuePageButton.Click += new System.EventHandler(this.queuePageButton_Click);
             // 
+            // menuHeaderLabel
+            // 
+            this.menuHeaderLabel.AutoSize = true;
+            this.menuHeaderLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuHeaderLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuHeaderLabel.Location = new System.Drawing.Point(8, 5);
+            this.menuHeaderLabel.Margin = new System.Windows.Forms.Padding(3, 0, 3, 40);
+            this.menuHeaderLabel.Name = "menuHeaderLabel";
+            this.menuHeaderLabel.Size = new System.Drawing.Size(214, 69);
+            this.menuHeaderLabel.TabIndex = 0;
+            this.menuHeaderLabel.Text = "Меню";
+            this.menuHeaderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // availableResourcesPageButton
             // 
             this.availableResourcesPageButton.BackColor = System.Drawing.Color.White;
-            this.availableResourcesPageButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.availableResourcesPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.availableResourcesPageButton.FlatAppearance.BorderSize = 0;
             this.availableResourcesPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.availableResourcesPageButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.availableResourcesPageButton.Location = new System.Drawing.Point(3, 243);
+            this.availableResourcesPageButton.Location = new System.Drawing.Point(8, 335);
             this.availableResourcesPageButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.availableResourcesPageButton.Name = "availableResourcesPageButton";
-            this.availableResourcesPageButton.Size = new System.Drawing.Size(163, 62);
+            this.availableResourcesPageButton.Size = new System.Drawing.Size(214, 86);
             this.availableResourcesPageButton.TabIndex = 1;
             this.availableResourcesPageButton.Text = "Доступные ресуры";
             this.availableResourcesPageButton.UseVisualStyleBackColor = false;
@@ -273,14 +271,14 @@
             // addResourcesPageButton
             // 
             this.addResourcesPageButton.BackColor = System.Drawing.Color.White;
-            this.addResourcesPageButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.addResourcesPageButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.addResourcesPageButton.FlatAppearance.BorderSize = 0;
             this.addResourcesPageButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.addResourcesPageButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addResourcesPageButton.Location = new System.Drawing.Point(3, 328);
+            this.addResourcesPageButton.Location = new System.Drawing.Point(8, 444);
             this.addResourcesPageButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 20);
             this.addResourcesPageButton.Name = "addResourcesPageButton";
-            this.addResourcesPageButton.Size = new System.Drawing.Size(163, 62);
+            this.addResourcesPageButton.Size = new System.Drawing.Size(214, 86);
             this.addResourcesPageButton.TabIndex = 1;
             this.addResourcesPageButton.Text = "Закуп";
             this.addResourcesPageButton.UseVisualStyleBackColor = false;
@@ -373,14 +371,13 @@
             this.Controls.Add(this.appLayout);
             this.Location = new System.Drawing.Point(15, 15);
             this.MinimumSize = new System.Drawing.Size(1200, 720);
-            this.Name = "Form1";
+            this.Name = "App";
             this.appLayout.ResumeLayout(false);
-            this.appLayout.PerformLayout();
             this.queueLayout.ResumeLayout(false);
             this.queueLayout.PerformLayout();
             this.queueTable.ResumeLayout(false);
-            this.menuButtonLayout.ResumeLayout(false);
-            this.menuButtonLayout.PerformLayout();
+            this.menuLayout.ResumeLayout(false);
+            this.menuLayout.PerformLayout();
             this.addResourceLayout.ResumeLayout(false);
             this.availableResourceLayout.ResumeLayout(false);
             this.createRequestLayout.ResumeLayout(false);
@@ -388,12 +385,15 @@
             this.PerformLayout();
         }
 
+        private System.Windows.Forms.Label dateQueueHeader;
+
+        private System.Windows.Forms.TableLayoutPanel menuLayout;
+
         private System.Windows.Forms.Button addResourcesPageButton;
         private System.Windows.Forms.Button availableResourcesPageButton;
         private System.Windows.Forms.Button queuePageButton;
         private System.Windows.Forms.Button newRequestPageButton;
         private System.Windows.Forms.Label menuHeaderLabel;
-        private System.Windows.Forms.FlowLayoutPanel menuButtonLayout;
 
         private System.Windows.Forms.Label idLabel;
         private System.Windows.Forms.Label nameLabel;

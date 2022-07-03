@@ -103,12 +103,16 @@
     <Compile Include="Forms\App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Components\Queue\QueueLabelInput.cs" />
-    <Compile Include="Forms\Components\Queue\CompleteRequestButton.cs" />
-    <Compile Include="Forms\Components\Queue\QueueResources.cs" />
-    <Compile Include="Forms\Controllers\LoadContent.cs" />
+    <Compile Include="Forms\Components\Table\ResourceSelect.cs" />
+    <Compile Include="Forms\Components\Table\TableInput.cs" />
+    <Compile Include="Forms\Components\Table\RemoveRowButton.cs" />
+    <Compile Include="Forms\Components\Table\QueueResources.cs" />
+    <Compile Include="Forms\Components\Table\TableNumberTextBox.cs" />
+    <Compile Include="Forms\Controllers\CreateRequestController.cs" />
+    <Compile Include="Forms\Controllers\TableController.cs" />
     <Compile Include="Forms\Controllers\Navigation.cs" />
     <Compile Include="Forms\Controllers\QueueController.cs" />
+    <Compile Include="Forms\Entity\ComboBoxItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\App.resx">

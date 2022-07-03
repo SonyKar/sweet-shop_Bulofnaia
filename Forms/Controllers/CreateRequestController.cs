@@ -26,15 +26,18 @@ namespace Bulofnaia.Forms.Controllers
             int lastRowNumber = layout.RowCount;
 
             // read resources from db
-            
-            object[] dummyData = { 
-                new ComboBoxItem("Ничего", 0),
-                new ComboBoxItem("Молоко л", 1),
-                new ComboBoxItem("Яйца шт", 2),
-                new ComboBoxItem("Варенье л", 3)
-            };
-            
-            layout.Controls.Add(new ResourceSelect(dummyData), 0, lastRowNumber);
+            ArrayList resources = ResourceService.SelectResourcesWithUnitNames();
+
+            object[] data = new object[resources.Count + 1];
+
+            int i = 1;
+            data[0] = new ComboBoxItem("Ничего", 0);
+            foreach (Resource resource in resources)
+            {
+                data[i++] = new ComboBoxItem(resource.Name + " " + resource.UnitName, resource.Id);
+            }
+
+            layout.Controls.Add(new ResourceSelect(data), 0, lastRowNumber);
             layout.Controls.Add(new TableNumberTextBox(), 1, lastRowNumber);
             layout.Controls.Add(new RemoveRowButton(null, "X"), 2, lastRowNumber);
             layout.RowCount++;

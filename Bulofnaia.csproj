@@ -70,6 +70,7 @@
     <Compile Include="API\Repositories\ResourceRepository.cs" />
     <Compile Include="API\Repositories\UnitRepository.cs" />
     <Compile Include="API\Services\RequestService.cs" />
+    <Compile Include="API\Services\ResourceService.cs" />
     <Compile Include="Forms\App.cs">
       <SubType>Form</SubType>
     </Compile>

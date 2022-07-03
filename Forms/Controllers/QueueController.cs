@@ -12,7 +12,7 @@ namespace Bulofnaia.Forms.Controllers
     {
         public void Load(TableLayoutPanel queueTable)
         {
-            ArrayList requests = RequestService.SelectAllRequestsWithResourceAvailabilitySortByDate();
+            Hashtable requests = RequestService.SelectAllRequestsWithResourceAvailabilitySortByDate();
             queueTable.SuspendLayout();
             ClearTable(queueTable);
             

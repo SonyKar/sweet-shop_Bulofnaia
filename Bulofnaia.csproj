@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=8.0.29.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.29\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,17 +53,39 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="Ubiety.Dns.Core, Version=2.2.1.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.29\lib\net48\Ubiety.Dns.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ZstdNet, Version=1.4.5.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>packages\MySql.Data.8.0.29\lib\net48\ZstdNet.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="API\DatabaseInitializer.cs" />
+    <Compile Include="API\Entities\Request.cs" />
+    <Compile Include="API\Entities\Resource.cs" />
+    <Compile Include="API\Entities\Unit.cs" />
+    <Compile Include="API\Repositories\RequestRepository.cs" />
+    <Compile Include="API\Repositories\RequestResourceRepository.cs" />
+    <Compile Include="API\Repositories\ResourceRepository.cs" />
+    <Compile Include="API\Repositories\UnitRepository.cs" />
+    <Compile Include="API\Services\RequestService.cs" />
     <Compile Include="Forms\App.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Components\Queue\LabelInput.cs" />
-    <Compile Include="Forms\Controllers\LoadContent.cs" />
+    <Compile Include="Forms\Components\Table\ResourceSelect.cs" />
+    <Compile Include="Forms\Components\Table\TableInput.cs" />
+    <Compile Include="Forms\Components\Table\RemoveRowButton.cs" />
+    <Compile Include="Forms\Components\Table\QueueResources.cs" />
+    <Compile Include="Forms\Components\Table\TableNumberTextBox.cs" />
+    <Compile Include="Forms\Controllers\CreateRequestController.cs" />
+    <Compile Include="Forms\Controllers\TableController.cs" />
     <Compile Include="Forms\Controllers\Navigation.cs" />
+    <Compile Include="Forms\Controllers\QueueController.cs" />
+    <Compile Include="Forms\Entity\ComboBoxItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\App.resx">
@@ -69,6 +100,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -81,6 +113,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="API\.idea\.idea.API.dir" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

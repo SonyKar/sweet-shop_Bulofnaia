@@ -32,7 +32,8 @@ namespace Bulofnaia.Forms
 
         private void queuePageButton_Click(object sender, EventArgs e)
         {
-            QueueController.Load(queueTable);
+            QueueController queueController = new QueueController();
+            queueController.Load(queueTable);
             Navigation.NavigateNewRequest(queueLayout, appLayout);
             ResetButtonColors((Button)sender);
         }
@@ -47,6 +48,18 @@ namespace Bulofnaia.Forms
         {
             Navigation.NavigateNewRequest(addResourceLayout, appLayout);
             ResetButtonColors((Button)sender);
+        }
+        
+        private void createRequestButton_Click(object sender, EventArgs e)
+        {
+            CreateRequestController controller = new CreateRequestController(this);
+            controller.CreateRequest();
+        }
+
+        private void addResourceToRequestButton_Click(object sender, EventArgs e)
+        {
+            CreateRequestController controller = new CreateRequestController();
+            controller.AddResourceControl(resourceSelect);
         }
     }
 }

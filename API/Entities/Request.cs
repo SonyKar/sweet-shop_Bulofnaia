@@ -16,6 +16,7 @@ namespace Bulofnaia.API.Entities
         {
             _resourcesUnmet = new Hashtable();
             _resourcesToQuantity = new Hashtable();
+            _resources = new ArrayList();
         }
         public Request(string name, DateTime limitDate) : this()
         {

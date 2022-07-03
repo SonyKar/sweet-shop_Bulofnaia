@@ -13,8 +13,8 @@ namespace Bulofnaia.API
     {
         private static string serverName = "localhost";
         private static string databaseName = "bulofnaia";
-        private static string connectionName = "bulofca";
-        private static string connectionPassword = "spovidlom";
+        private static string connectionName = "root";
+        private static string connectionPassword = "";
 
         private static MySqlConnection _connection = null;
         

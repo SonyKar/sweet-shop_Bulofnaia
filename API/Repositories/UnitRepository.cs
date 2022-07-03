@@ -37,7 +37,6 @@ namespace Bulofnaia.API.Repositories
                 result = new Unit();
                 result.Id = (int)reader["id"];
                 result.Name = (string)reader["name"];
-                connection.Close();
                 // return result;
                 break;
             }

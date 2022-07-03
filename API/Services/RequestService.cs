@@ -53,17 +53,13 @@ namespace Bulofnaia.API.Services
 
         public static Hashtable SelectAllRequestsWithResourceAvailabilitySortByDate()
         {
-            string query = "" +
-                           "SELECT request.id AS request_id, request.name AS request_name, request.limit_date, request_resource.quantity, resource.name AS resource_name, unit.name AS unit_name, resource.id AS resource_id" +
-                           "FROM" +
-                           "((request_resource INNER JOIN request ON request.id = request_resource.request_id)" +
-                           "INNER JOIN (resource INNER JOIN unit ON unit.id = resource.id) ON resource.id = request_resource.resource_id)" +
-                           "ORDER BY request.limit_date, request.id";
+            Hashtable idToResourceTable = ResourceRepository.SelectAllResourcesIdToResourceTable();
+            
+            string query = "SELECT request.id AS request_id, request.name AS request_name, request.limit_date, request_resource.quantity, resource.name AS resource_name, unit.name AS unit_name, resource.id AS resource_id FROM ((request_resource INNER JOIN request ON request.id = request_resource.request_id) INNER JOIN (resource INNER JOIN unit ON unit.id = resource.unit) ON resource.id = request_resource.resource_id) ORDER BY request.limit_date, request.id";
             MySqlCommand command = new MySqlCommand(query, DatabaseInitializer.OpenConnection());
             MySqlDataReader reader = command.ExecuteReader();
 
             Hashtable idToRequestMap = new Hashtable();
-            Hashtable idToResourceTable = ResourceRepository.SelectAllResourcesIdToResourceTable();
 
             while (reader.Read())
             {
@@ -80,6 +76,7 @@ namespace Bulofnaia.API.Services
                 {
                     idToRequestMap[requestId] = new Request();
                     request = (Request)idToRequestMap[requestId];
+                    request.Id = requestId;
                     request.Name = requestName;
                     request.LimitDate = limitDate;
                 }
@@ -99,7 +96,8 @@ namespace Bulofnaia.API.Services
                 }
 
             }
-
+            
+            DatabaseInitializer.CloseConnection();
             return idToRequestMap;
         }
     }

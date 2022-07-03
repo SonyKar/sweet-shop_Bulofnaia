@@ -55,7 +55,7 @@ namespace Bulofnaia.API.Services
         {
             Hashtable idToResourceTable = ResourceRepository.SelectAllResourcesIdToResourceTable();
             
-            string query = "SELECT request.id AS request_id, request.name AS request_name, request.limit_date, request_resource.quantity, resource.name AS resource_name, unit.name AS unit_name, resource.id AS resource_id FROM ((request_resource INNER JOIN request ON request.id = request_resource.request_id) INNER JOIN (resource INNER JOIN unit ON unit.id = resource.unit) ON resource.id = request_resource.resource_id) ORDER BY request.limit_date, request.id";
+            string query = "SELECT request.id AS request_id, request.name AS request_name, request.limit_date, request_resource.quantity, resource.name AS resource_name, unit.name AS unit_name, resource.id AS resource_id FROM ((request_resource LEFT JOIN request ON request.id = request_resource.request_id) INNER JOIN (resource INNER JOIN unit ON unit.id = resource.unit) ON resource.id = request_resource.resource_id) ORDER BY request.limit_date, request.id";
             MySqlCommand command = new MySqlCommand(query, DatabaseInitializer.OpenConnection());
             MySqlDataReader reader = command.ExecuteReader();
 
@@ -92,7 +92,13 @@ namespace Bulofnaia.API.Services
                 ((Resource)idToResourceTable[resourceId]).Quantity -= quantity;
                 if (((Resource)idToResourceTable[resourceId]).Quantity < 0)
                 {
-                    request.UnmetRequirements.Add(resourceId, ((Resource)idToResourceTable[resourceId]).Quantity);
+                    request.UnmetRequirements.Add(new Resource
+                    {
+                        Id = resourceId,
+                        Name = resourceName,
+                        UnitName = unitName,
+                        Quantity = -((Resource)idToResourceTable[resourceId]).Quantity
+                    });
                 }
 
             }

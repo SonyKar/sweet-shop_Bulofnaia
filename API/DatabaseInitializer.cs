@@ -2,6 +2,7 @@
 using System.Data.Common;
 using Bulofnaia.API.Entities;
 using Bulofnaia.API.Repositories;
+using Bulofnaia.API.Services;
 using MySql.Data;
 using MySql.Data.MySqlClient;
 
@@ -22,27 +23,50 @@ namespace Bulofnaia.API
             _connection = OpenConnection();
             CreateNecessaryTables();
 
-            PopulateRequests();
-            foreach (Request request in RequestRepository.GetAllRequests())
-            {
-                Console.WriteLine(request);
-            }
-
-            // PopulateUnits();
+            PopulateUnits();
             foreach (Unit request in UnitRepository.GetAllUnits())
             {
                 Console.WriteLine(request);
             }
 
             PopulateResources();
+            // PopulateRequestResources();
+            
+            PopulateRequests();
+            RequestService.SelectAllRequestsWithResourceAvailabilitySortByDate();
+            for (int i = 0; i < 50; i++)
+            {
+                RequestService.MarkRequestAsAccomplishedById(i);
+            }
+        }
+
+        private static void PopulateRequestResources()
+        {
+            RequestResourceRepository.InsertResourceRequestSafe(1,1,200);
+            RequestResourceRepository.InsertResourceRequestSafe(2,1,200);
+            RequestResourceRepository.InsertResourceRequestSafe(3,1,200);
+            RequestResourceRepository.InsertResourceRequestSafe(3,2,200);
+            RequestResourceRepository.InsertResourceRequestSafe(3,3,200);
+            RequestResourceRepository.InsertResourceRequestSafe(4,1,200);
+            RequestResourceRepository.InsertResourceRequestSafe(5,1,200);
+            RequestResourceRepository.InsertResourceRequestSafe(11,1,200);
+            
+            RequestResourceRepository.DeleteAllByRequestId(3);
         }
 
         private static void PopulateRequests()
         {
-            for (int i = 0; i <= 10; i++)
-            {
-                RequestRepository.AddRequest(new Request(i.ToString(), DateTime.Now));
-            }
+            // for (int i = 0; i <= 10; i++)
+            // {
+            //     RequestRepository.AddRequest(new Request(i.ToString(), DateTime.Now));
+            // }
+
+            Request req1 = new Request("Bulofca prikolnaia", DateTime.Now);
+            req1.ResourceToQuantity.Add(2, 1000.00f);
+            req1.ResourceToQuantity.Add(1, 5.0f);
+            req1.ResourceToQuantity.Add(3, 3.0f);
+            RequestService.AddRequest(req1);
+            RequestService.RemoveRequestById(1);
         }
 
         private static void PopulateUnits()
@@ -54,10 +78,10 @@ namespace Bulofnaia.API
 
         private static void PopulateResources()
         {
-            ResourceRepository.AddResourceSafe(new Resource("Sugar",200,UnitRepository.GetByName("gram").Id));
-            ResourceRepository.AddResourceSafe(new Resource("Tea",500,UnitRepository.GetByName("gram").Id));
-            ResourceRepository.AddResourceSafe(new Resource("Vodka",2,UnitRepository.GetByName("liter").Id));
-            ResourceRepository.AddResourceSafe(new Resource("Bulka",2,UnitRepository.GetByName("gram").Id));
+            ResourceRepository.InsertResourceSafe(new Resource("Sugar",200,UnitRepository.GetByName("gram").Id));
+            ResourceRepository.InsertResourceSafe(new Resource("Tea",500,UnitRepository.GetByName("gram").Id));
+            ResourceRepository.InsertResourceSafe(new Resource("Vodka",2,UnitRepository.GetByName("liter").Id));
+            ResourceRepository.InsertResourceSafe(new Resource("Bulka",2,UnitRepository.GetByName("gram").Id));
         }
 
         public static MySqlConnection OpenConnection()
@@ -138,7 +162,8 @@ namespace Bulofnaia.API
                            "resource_id INT(8) NOT NULL," +
                            "quantity FLOAT(8) NOT NULL," +
                            "CONSTRAINT foreign_request_id FOREIGN KEY (request_id) REFERENCES request(id)," +
-                           "CONSTRAINT foreign_resource_id FOREIGN KEY (resource_id) REFERENCES resource(id)" +
+                           "CONSTRAINT foreign_resource_id FOREIGN KEY (resource_id) REFERENCES resource(id)," +
+                           "CONSTRAINT unique_request_resource_pair UNIQUE (request_id, resource_id)" +
                            ")";
             
             return query;

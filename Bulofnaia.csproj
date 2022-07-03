@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>packages\MySql.Data.8.0.29\lib\net48\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,12 +49,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
+    <Compile Include="API\DatabaseInitializer.cs" />
+    <Compile Include="API\Entities\Request.cs" />
+    <Compile Include="API\Entities\Resource.cs" />
+    <Compile Include="API\Entities\Unit.cs" />
+    <Compile Include="API\Repositories\RequestRepository.cs" />
+    <Compile Include="API\Repositories\RequestResourceRepository.cs" />
+    <Compile Include="API\Repositories\ResourceRepository.cs" />
+    <Compile Include="API\Repositories\UnitRepository.cs" />
+    <Compile Include="API\Services\RequestService.cs" />
+    <Compile Include="Forms\App.cs" />
+    <Compile Include="Forms\App.Designer.cs" />
+    <Compile Include="Forms\Components\Queue\LabelInput.cs" />
+    <Compile Include="Forms\Controllers\LoadContent.cs" />
+    <Compile Include="Forms\Controllers\Navigation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">

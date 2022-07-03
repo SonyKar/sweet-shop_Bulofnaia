@@ -47,5 +47,12 @@
             get => _unit;
             set => _unit = value;
         }
+
+        public override string ToString()
+        {
+            string result = "Resource: {id = " + _id + ", name = " + _name + ", quantity = " + _quantity + ", unit = " +
+                            _unit + "}";
+            return result;
+        }
     }
 }

@@ -7,12 +7,18 @@ namespace Bulofnaia.API.Repositories
 {
     public class ResourceRepository
     {
-        public static void AddResource(Resource resource)
+        public static void InsertResource(Resource resource)
         {
+            if (resource.Name == null || resource.Name.Length > 255)
+            {
+                throw new Exception("Resource must have name and no longer than 255 characters");
+            }
+
+            
             DatabaseInitializer.RunQuery($"INSERT INTO resource (name, quantity, unit) VALUES ('{resource.Name}', '{resource.Quantity}', '{resource.Unit}')");
         }
         
-        public static ArrayList GetAllResources()
+        public static ArrayList SelectAllResources()
         {
             string query = "SELECT res.id, res.name, res.quantity, res.unit FROM resource AS res";
             MySqlConnection connection = DatabaseInitializer.OpenConnection();
@@ -21,14 +27,15 @@ namespace Bulofnaia.API.Repositories
             MySqlDataReader reader = cmd.ExecuteReader();
 
             ArrayList results = new ArrayList();
-            Resource result = null;
             while (reader.Read())
             {
-                result = new Resource();
-                result.Id = (int)reader["id"];
-                result.Name = (string)reader["name"];
-                result.Unit = (int)reader["unit"];
-                result.Quantity = (float)reader["quantity"];
+                var result = new Resource
+                {
+                    Id = (int)reader["id"],
+                    Name = (string)reader["name"],
+                    Unit = (int)reader["unit"],
+                    Quantity = (float)reader["quantity"]
+                };
                 results.Add(result);
             }
             
@@ -36,11 +43,38 @@ namespace Bulofnaia.API.Repositories
             return results;
         }
 
-        public static void AddResourceSafe(Resource resource)
+        public static Hashtable SelectAllResourcesIdToResourceTable()
+        {
+            Hashtable result = new Hashtable();
+            ArrayList resources = SelectAllResources();
+            foreach (Resource resource in resources)
+            {
+                result[resource.Id] = resource;
+            }
+
+            return result;
+        }
+
+        public static void UpdateQuantityById(int id, float quantity)
+        {
+            DatabaseInitializer.RunQuery($"UPDATE resource AS res SET quantity = {quantity} WHERE res.id = {id}");
+        }
+
+        public static void UpdateAddQuantityById(int id, float addedQuantity)
+        {
+            DatabaseInitializer.RunQuery($"UPDATE resource AS res SET res.quantity = res.quantity + {addedQuantity} WHERE res.id = {id}");
+        }
+        
+        public static void UpdateSubstractQuantityById(int id, float substractedQuantity)
+        {
+            DatabaseInitializer.RunQuery($"UPDATE resource AS res SET res.quantity = res.quantity - {substractedQuantity} WHERE res.id = {id}");
+        }
+
+        public static void InsertResourceSafe(Resource resource)
         {
             try
             {
-                AddResource(resource);
+                InsertResource(resource);
             }
             catch (MySqlException e)
             {

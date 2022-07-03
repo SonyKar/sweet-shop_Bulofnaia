@@ -9,15 +9,16 @@ namespace Bulofnaia.API.Entities
         private string _name;
         private DateTime _limitDate;
         private Hashtable _resourcesToQuantity;
+        private Hashtable _resourcesUnmet;
 
         public Request()
         {
+            _resourcesUnmet = new Hashtable();
             _resourcesToQuantity = new Hashtable();
         }
-        public Request(string name, DateTime limitDate)
+        public Request(string name, DateTime limitDate) : this()
         {
-            _resourcesToQuantity = new Hashtable();
-            this._name = name;
+            _name = name;
             _limitDate = limitDate;
         }
 
@@ -44,9 +45,30 @@ namespace Bulofnaia.API.Entities
             get => _limitDate.ToString("yyyy-MM-dd HH:mm:ss");
         }
 
+        public Hashtable ResourceToQuantity
+        {
+            get => _resourcesToQuantity;
+            set => _resourcesToQuantity = value;
+        }
+
+        public Hashtable UnmetRequirements
+        {
+            get => _resourcesUnmet;
+            set => _resourcesUnmet = value;
+        }
+
         public override string ToString()
         {
-            return "id = " + _id + " name = " + _name + " limitDate = " + _limitDate;
+            string result = "Request: {id = " + _id + " name = " + _name + " limitDate = " + _limitDate + " resourcesUnmet = [" ;
+            foreach (DictionaryEntry entry in _resourcesUnmet)
+            {
+                result += $"({entry.Key},{entry.Value})";
+            }
+
+            result += "]";
+            result += "}";
+
+            return result;
         }
     }
 }

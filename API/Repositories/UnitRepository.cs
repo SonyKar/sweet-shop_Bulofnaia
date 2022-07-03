@@ -14,13 +14,13 @@ namespace Bulofnaia.API.Repositories
 
         public static Unit GetByName(string name)
         {
-            string query = "SELECT un.id, un.name FROM unit AS un WHERE un.name = '" + name + "'";
+            var query = $"SELECT un.id, un.name FROM unit AS un WHERE un.name = {name}";
             return GetByQuery(query);
         }
         
         public static Unit GetById(int id)
         {
-            string query = "SELECT un.id, un.name FROM unit AS un WHERE un.id = " + id;
+            var query = $"SELECT un.id, un.name FROM unit AS un WHERE un.id = {id}";
             return GetByQuery(query);
         }
 
@@ -41,14 +41,7 @@ namespace Bulofnaia.API.Repositories
                 // return result;
                 break;
             }
-            
-            if (result == null)
-                Console.WriteLine("null");
-            else
-            {
-                Console.WriteLine(result);
-            }
-            
+
             DatabaseInitializer.CloseConnection();
             return result;
         }
@@ -62,10 +55,9 @@ namespace Bulofnaia.API.Repositories
             MySqlDataReader reader = cmd.ExecuteReader();
 
             ArrayList results = new ArrayList();
-            Unit result = null;
             while (reader.Read())
             {
-                result = new Unit();
+                var result = new Unit();
                 result.Id = (int)reader["id"];
                 result.Name = (string)reader["name"];
                 results.Add(result);

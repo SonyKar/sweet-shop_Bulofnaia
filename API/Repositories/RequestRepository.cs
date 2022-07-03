@@ -2,28 +2,28 @@
 using System.Collections;
 using Bulofnaia.API.Entities;
 using MySql.Data.MySqlClient;
-using MySqlX.XDevAPI;
-using Org.BouncyCastle.Ocsp;
 
 namespace Bulofnaia.API.Repositories
 {
-    public class RequestRepository
+    public static class RequestRepository
     {
-        public static Request FindRequestById(int id)
+        public static Request SelectRequestById(int id)
         {
-            string query = "SELECT req.id, req.name, req.limit_date FROM request AS req WHERE req.id = " + id;
-            MySqlConnection connection = DatabaseInitializer.OpenConnection();
+            var query = $"SELECT req.id, req.name, req.limit_date FROM request AS req WHERE req.id = {id}";
+            var connection = DatabaseInitializer.OpenConnection();
             var cmd = new MySqlCommand(query, connection);
 
-            MySqlDataReader reader = cmd.ExecuteReader();
+            var reader = cmd.ExecuteReader();
 
             Request result = null;
             while (reader.Read())
             {
-                result = new Request();
-                result.Id = (int)reader["id"];
-                result.Name = (string)reader["name"];
-                result.LimitDate = (DateTime)reader["limit_date"];
+                result = new Request
+                {
+                    Id = (int)reader["id"],
+                    Name = (string)reader["name"],
+                    LimitDate = (DateTime)reader["limit_date"]
+                };
                 break;
             }
 
@@ -31,35 +31,40 @@ namespace Bulofnaia.API.Repositories
             return result;
         }
 
-        public static void AddRequest(Request request)
+        public static void InsertRequest(Request request)
         {
-            string reqName = request.Name;
-            DateTime reqDate = request.LimitDate;
-            DatabaseInitializer.RunQuery($"INSERT INTO request (name, limit_date) VALUES ('{reqName}', '{request.DateMySQL}')");
+            if (request.Name == null || request.Name.Length > 255)
+            {
+                throw new Exception(
+                    "Name should be specified and no longer than 255 characters. Date must me specified");
+            }
+
+            DatabaseInitializer.RunQuery($"INSERT INTO request (name, limit_date) VALUES ('{request.Name}', '{request.DateMySQL}')");
         }
 
-        public static void RemoveRequestById(int id)
+        public static void DeleteRequestById(int id)
         {
             string query = $"DELETE FROM request WHERE id = {id}";
             DatabaseInitializer.RunQuery(query);
         }
 
-        public static ArrayList GetAllRequests()
+        public static ArrayList SelectAllRequests()
         {
-            string query = "SELECT req.id, req.name, req.limit_date FROM request AS req";
+            string query = "SELECT req.id, req.name, req.limit_date FROM request AS req ORDER BY req.limit_date";
             MySqlConnection connection = DatabaseInitializer.OpenConnection();
             var cmd = new MySqlCommand(query, connection);
 
             MySqlDataReader reader = cmd.ExecuteReader();
 
             ArrayList results = new ArrayList();
-            Request result = null;
             while (reader.Read())
             {
-                result = new Request();
-                result.Id = (int)reader["id"];
-                result.Name = (string)reader["name"];
-                result.LimitDate = (DateTime)reader["limit_date"];
+                var result = new Request
+                {
+                    Id = (int)reader["id"],
+                    Name = (string)reader["name"],
+                    LimitDate = (DateTime)reader["limit_date"]
+                };
                 results.Add(result);
             }
             
@@ -72,7 +77,7 @@ namespace Bulofnaia.API.Repositories
             Request result = null;
             try
             {
-                result = FindRequestById(id);
+                result = SelectRequestById(id);
             }
             catch (Exception e)
             {
@@ -86,7 +91,7 @@ namespace Bulofnaia.API.Repositories
         {
             try
             {
-                AddRequest(request);
+                InsertRequest(request);
             }
             catch (MySqlException e)
             {
@@ -94,11 +99,11 @@ namespace Bulofnaia.API.Repositories
             }
         }
         
-        public static void RemoveRequestByIdSafe(int id)
+        public static void DeleteRequestByIdSafe(int id)
         {
             try
             {
-                RemoveRequestById(id);
+                DeleteRequestById(id);
             }
             catch (MySqlException e)
             {
@@ -106,12 +111,12 @@ namespace Bulofnaia.API.Repositories
             }
         }
 
-        public static ArrayList GetAllRequestsSafe()
+        public static ArrayList SelectAllRequestsSafe()
         {
             ArrayList result = new ArrayList();
             try
             {
-                result = GetAllRequests();
+                result = SelectAllRequests();
             }
             catch (MySqlException e)
             {

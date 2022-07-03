@@ -51,30 +51,56 @@ namespace Bulofnaia.API.Services
             RemoveRequestById(request.Id);
         }
 
-        public static void SelectAllRequestsWithResourceAvailabilitySortByDate()
+        public static Hashtable SelectAllRequestsWithResourceAvailabilitySortByDate()
         {
-            Hashtable idToResource = ResourceRepository.SelectAllResourcesIdToResourceTable();
-            ArrayList allRequests = RequestRepository.SelectAllRequests();
+            string query = "" +
+                           "SELECT request.id AS request_id, request.name AS request_name, request.limit_date, request_resource.quantity, resource.name AS resource_name, unit.name AS unit_name, resource.id AS resource_id" +
+                           "FROM" +
+                           "((request_resource INNER JOIN request ON request.id = request_resource.request_id)" +
+                           "INNER JOIN (resource INNER JOIN unit ON unit.id = resource.id) ON resource.id = request_resource.resource_id)" +
+                           "ORDER BY request.limit_date, request.id";
+            MySqlCommand command = new MySqlCommand(query, DatabaseInitializer.OpenConnection());
+            MySqlDataReader reader = command.ExecuteReader();
 
-            foreach (Request request in allRequests)
+            Hashtable idToRequestMap = new Hashtable();
+            Hashtable idToResourceTable = ResourceRepository.SelectAllResourcesIdToResourceTable();
+
+            while (reader.Read())
             {
-                Hashtable requirements = RequestResourceRepository.SelectAllResurcesIdToQuantityTableByRequestId(request.Id);
+                int requestId = (int)reader["request_id"];
+                int resourceId = (int)reader["resource_id"];
+                string requestName = (string)reader["request_name"];
+                DateTime limitDate = (DateTime)reader["limit_date"];
+                float quantity = (float)reader["quantity"];
+                string resourceName = (string)reader["resource_name"];
+                string unitName = (string)reader["unit_name"];
 
-                foreach (DictionaryEntry entry in requirements)
+                Request request;
+                if (idToRequestMap[requestId] == null)
                 {
-                    int resourceId = (int)entry.Key;
-                    float quantity = (float)entry.Value;
-                    
-                    Resource resource = (Resource)idToResource[resourceId]; 
-                    
-                    resource.Quantity -= quantity;
-                    
-                    if (resource.Quantity < 0)
-                        request.UnmetRequirements[resourceId] = -resource.Quantity;
+                    idToRequestMap[requestId] = new Request();
+                    request = (Request)idToRequestMap[requestId];
+                    request.Name = requestName;
+                    request.LimitDate = limitDate;
                 }
-                
-                Console.WriteLine(request);
+
+                request = (Request)idToRequestMap[requestId];
+                request.Resources.Add(new Resource
+                {
+                    Name = resourceName,
+                    Quantity = quantity,
+                    UnitName = unitName
+                });
+
+                ((Resource)idToResourceTable[resourceId]).Quantity -= quantity;
+                if (((Resource)idToResourceTable[resourceId]).Quantity < 0)
+                {
+                    request.UnmetRequirements.Add(resourceId, ((Resource)idToResourceTable[resourceId]).Quantity);
+                }
+
             }
+
+            return idToRequestMap;
         }
     }
 }

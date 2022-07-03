@@ -26,7 +26,7 @@ namespace Bulofnaia.Forms.Controllers
                     queueResources.Controls.Add(new TableInput(resource.Name + " " + resource.Quantity + resource.UnitName));
                 }
 
-                bool isPossible = data.UnmetRequirements.Keys.Count == 0;
+                bool isPossible = data.UnmetRequirements.Count == 0;
                 RemoveRowButton button = new RemoveRowButton(this);
                 if (!isPossible) button.Enabled = false;
                 

@@ -10,6 +10,7 @@ namespace Bulofnaia.API.Entities
         private DateTime _limitDate;
         private Hashtable _resourcesToQuantity;
         private Hashtable _resourcesUnmet;
+        private ArrayList _resources;
 
         public Request()
         {
@@ -55,6 +56,12 @@ namespace Bulofnaia.API.Entities
         {
             get => _resourcesUnmet;
             set => _resourcesUnmet = value;
+        }
+
+        public ArrayList Resources
+        {
+            get => _resources;
+            set => _resources = value;
         }
 
         public override string ToString()

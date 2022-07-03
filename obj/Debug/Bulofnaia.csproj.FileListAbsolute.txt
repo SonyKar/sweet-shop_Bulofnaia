@@ -9,3 +9,10 @@ C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.csproj.CoreCompileInpu
 C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.exe
 C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.pdb
 C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.Forms.App.resources
+C:\Users\sa_ca\source\repos\Bulofnaia\bin\Debug\MySql.Data.dll
+C:\Users\sa_ca\source\repos\Bulofnaia\bin\Debug\Ubiety.Dns.Core.dll
+C:\Users\sa_ca\source\repos\Bulofnaia\bin\Debug\ZstdNet.dll
+C:\Users\sa_ca\source\repos\Bulofnaia\bin\Debug\System.Memory.dll
+C:\Users\sa_ca\source\repos\Bulofnaia\bin\Debug\System.Buffers.dll
+C:\Users\sa_ca\source\repos\Bulofnaia\bin\Debug\MySql.Data.xml
+C:\Users\sa_ca\source\repos\Bulofnaia\obj\Debug\Bulofnaia.csproj.CopyComplete

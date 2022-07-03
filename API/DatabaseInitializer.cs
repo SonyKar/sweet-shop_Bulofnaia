@@ -33,11 +33,11 @@ namespace Bulofnaia.API
             // PopulateRequestResources();
             
             PopulateRequests();
-            RequestService.SelectAllRequestsWithResourceAvailabilitySortByDate();
+            /*RequestService.SelectAllRequestsWithResourceAvailabilitySortByDate();
             for (int i = 0; i < 50; i++)
             {
                 RequestService.MarkRequestAsAccomplishedById(i);
-            }
+            }*/
         }
 
         private static void PopulateRequestResources()
@@ -50,8 +50,6 @@ namespace Bulofnaia.API
             RequestResourceRepository.InsertResourceRequestSafe(4,1,200);
             RequestResourceRepository.InsertResourceRequestSafe(5,1,200);
             RequestResourceRepository.InsertResourceRequestSafe(11,1,200);
-            
-            RequestResourceRepository.DeleteAllByRequestId(3);
         }
 
         private static void PopulateRequests()
@@ -91,7 +89,7 @@ namespace Bulofnaia.API
                 NonNullOrEmptyRequired(databaseName, "Database name is required");
                 NonNullOrEmptyRequired(serverName, "Server name is required");
                 NonNullOrEmptyRequired(connectionName, "Connection name is required");
-                NonNullOrEmptyRequired(connectionPassword, "Connection password is required");
+                //NonNullOrEmptyRequired(connectionPassword, "Connection password is required");
 
                 string connstring = string.Format("Server={0}; database={1}; UID={2}; password={3}", serverName, databaseName, connectionName, connectionPassword);
                 _connection = new MySqlConnection(connstring);

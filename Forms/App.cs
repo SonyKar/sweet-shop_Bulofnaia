@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Bulofnaia.Forms.Controllers;
 
 namespace Bulofnaia.Forms
 {
-    public partial class Form1 : Form
+    public partial class App : Form
     {
-        public Form1()
+        public App()
         {
             InitializeComponent();
         }
@@ -31,7 +32,7 @@ namespace Bulofnaia.Forms
 
         private void queuePageButton_Click(object sender, EventArgs e)
         {
-            LoadContent.LoadQueue(queueTable);
+            QueueController.Load(queueTable);
             Navigation.NavigateNewRequest(queueLayout, appLayout);
             ResetButtonColors((Button)sender);
         }

@@ -6,6 +6,7 @@
         private string _name;
         private float _quantity;
         private int _unit;
+        private string _unitName;
 
         public Resource()
         {
@@ -46,6 +47,12 @@
         {
             get => _unit;
             set => _unit = value;
+        }
+
+        public string UnitName
+        {
+            get => _unitName;
+            set => _unitName = value;
         }
 
         public override string ToString()

@@ -14,7 +14,7 @@ namespace Bulofnaia.API.Repositories
 
         public static Unit GetByName(string name)
         {
-            var query = $"SELECT un.id, un.name FROM unit AS un WHERE un.name = {name}";
+            var query = $"SELECT un.id, un.name FROM unit AS un WHERE un.name = '{name}'";
             return GetByQuery(query);
         }
         

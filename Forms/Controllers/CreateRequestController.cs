@@ -10,7 +10,7 @@ namespace Bulofnaia.Forms.Controllers
 {
     public class CreateRequestController : TableController
     {
-        private App parent;
+        private readonly App _parent;
 
         public CreateRequestController()
         {
@@ -18,14 +18,13 @@ namespace Bulofnaia.Forms.Controllers
 
         public CreateRequestController(App parent)
         {
-            this.parent = parent;
+            _parent = parent;
         }
 
         public void AddResourceControl(TableLayoutPanel layout)
         {
             int lastRowNumber = layout.RowCount;
-
-            // read resources from db
+            
             ArrayList resources = ResourceService.SelectResourcesWithUnitNames();
 
             object[] data = new object[resources.Count + 1];
@@ -45,16 +44,16 @@ namespace Bulofnaia.Forms.Controllers
 
         public void CreateRequest()
         {
-            String requestName = parent.requestName.Text;
-            parent.requestName.Text = "Название";
-            DateTime requestDate = parent.requestDatePicker.Value;
-            parent.requestDatePicker.Value = DateTime.Today;
+            String requestName = _parent.requestName.Text;
+            _parent.requestName.Text = "Название";
+            DateTime requestDate = _parent.requestDatePicker.Value;
+            _parent.requestDatePicker.Value = DateTime.Today;
             
             Hashtable resourceToQuantity = new Hashtable();
-            for (int row = 0; row < parent.resourceSelect.RowCount; row++)
+            for (int row = 0; row < _parent.resourceSelectLayout.RowCount; row++)
             {
-                int resourceId = ((ComboBox)parent.resourceSelect.GetControlFromPosition(0, row)).SelectedIndex;
-                String quantityText = parent.resourceSelect.GetControlFromPosition(1, row).Text;
+                int resourceId = ((ComboBox)_parent.resourceSelectLayout.GetControlFromPosition(0, row)).SelectedIndex;
+                String quantityText = _parent.resourceSelectLayout.GetControlFromPosition(1, row).Text;
                 float quantity = 0;
                 if (quantityText != "") quantity = float.Parse(quantityText);
                 if (resourceId != 0 && quantity != 0) resourceToQuantity[resourceId] = quantity;
@@ -63,7 +62,7 @@ namespace Bulofnaia.Forms.Controllers
             Request request = new Request() { Name = requestName, LimitDate = requestDate, ResourceToQuantity = resourceToQuantity };
             RequestService.AddRequest(request);
             
-            ClearTable(parent.resourceSelect, false);
+            ClearTable(_parent.resourceSelectLayout, false);
         }
     }
 }

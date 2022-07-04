@@ -82,10 +82,12 @@
     <Compile Include="Forms\Components\Table\RemoveRowButton.cs" />
     <Compile Include="Forms\Components\Table\QueueResources.cs" />
     <Compile Include="Forms\Components\Table\TableNumberTextBox.cs" />
+    <Compile Include="Forms\Controllers\AvailableResourcesController.cs" />
     <Compile Include="Forms\Controllers\CreateRequestController.cs" />
     <Compile Include="Forms\Controllers\TableController.cs" />
     <Compile Include="Forms\Controllers\Navigation.cs" />
     <Compile Include="Forms\Controllers\QueueController.cs" />
+    <Compile Include="Forms\Controllers\UnmetResourcesController.cs" />
     <Compile Include="Forms\Entity\ComboBoxItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

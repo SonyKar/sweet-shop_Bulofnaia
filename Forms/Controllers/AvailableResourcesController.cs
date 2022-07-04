@@ -1,9 +1,9 @@
-﻿using System.Collections;
-using System.Drawing;
+﻿using System;
+using System.Collections;
 using System.Windows.Forms;
 using Bulofnaia.API.Entities;
+using Bulofnaia.API.Repositories;
 using Bulofnaia.API.Services;
-using Bulofnaia.Forms.Components.Queue;
 using Bulofnaia.Forms.Components.Table;
 using Bulofnaia.Forms.Entity;
 
@@ -18,7 +18,7 @@ namespace Bulofnaia.Forms.Controllers
             _parent = parent;
         }
 
-        public void Load(TableLayoutPanel layout)
+        private void Load(TableLayoutPanel layout)
         {
             // read from db
             ArrayList resources = ResourceService.SelectResourcesWithUnitNames();
@@ -33,7 +33,7 @@ namespace Bulofnaia.Forms.Controllers
             layout.ResumeLayout();
         }
 
-        public void AddResourceToTable(TableLayoutPanel layout, Resource resource)
+        private void AddResourceToTable(TableLayoutPanel layout, Resource resource)
         {
             int lastRowNumber = layout.RowCount;
 
@@ -63,7 +63,42 @@ namespace Bulofnaia.Forms.Controllers
             ClearTable(_parent.numberTextboxPlace);
             _parent.numberTextboxPlace.Controls.Add(new TableNumberTextBox());
             
+            ArrayList units = UnitRepository.GetAllUnits();
+
+            object[] unitsData = new object[units.Count];
+
+            i = 0;
+            foreach (Unit unit in units)
+            {
+                unitsData[i++] = new ComboBoxItem(unit.Name, unit.Id);
+            }
+            
+            ClearTable(_parent.selectUnitPlace);
+            _parent.selectUnitPlace.Controls.Add(new ResourceSelect(unitsData));
+            
             Load(_parent.resourcesTable);
+        }
+
+        public void EditResourceNumber()
+        {
+            TextBox quantityTextBox = (TextBox)_parent.numberTextboxPlace.GetControlFromPosition(0, 0);
+            int quantity = Convert.ToInt32(quantityTextBox.Text);
+            
+            int resourceId = ((ComboBox)_parent.selectResourcePlace.GetControlFromPosition(0, 0)).SelectedIndex;
+        }
+
+        public void CreateResource()
+        {
+            String resourceName = _parent.newResourceName.Text;
+            _parent.newResourceName.Text = "Название";
+            
+            int unitId = ((ComboBox)_parent.selectUnitPlace.GetControlFromPosition(0, 0)).SelectedIndex;
+        }
+
+        public override void OnDeleteHandler(TableLayoutPanel table, int rowNumber)
+        {
+            int resourceId = Convert.ToInt32(table.GetControlFromPosition(0, rowNumber).Text);
+            base.OnDeleteHandler(table, rowNumber);
         }
     }
 }

@@ -65,5 +65,26 @@ namespace Bulofnaia.Forms
             CreateRequestController controller = new CreateRequestController();
             controller.AddResourceControl(resourceSelectLayout);
         }
+
+        private void createResourceButton_Click(object sender, EventArgs e)
+        {
+            AvailableResourcesController controller = new AvailableResourcesController(this);
+            controller.CreateResource();
+            controller.InitializeComponents();
+        }
+
+        private void plusResourceButton_Click(object sender, EventArgs e)
+        {
+            AvailableResourcesController controller = new AvailableResourcesController(this);
+            controller.EditResourceNumber();
+            controller.InitializeComponents();
+        }
+
+        private void minusResourceButton_Click(object sender, EventArgs e)
+        {
+            AvailableResourcesController controller = new AvailableResourcesController(this);
+            controller.EditResourceNumber();
+            controller.InitializeComponents();
+        }
     }
 }

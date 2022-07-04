@@ -4,7 +4,6 @@ using System.Drawing;
 using System.Windows.Forms;
 using Bulofnaia.API.Entities;
 using Bulofnaia.API.Services;
-using Bulofnaia.Forms.Components.Queue;
 using Bulofnaia.Forms.Components.Table;
 
 namespace Bulofnaia.Forms.Controllers

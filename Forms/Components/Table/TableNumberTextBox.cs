@@ -6,9 +6,9 @@ namespace Bulofnaia.Forms.Components.Table
     {
         public TableNumberTextBox()
         {
-            Dock = System.Windows.Forms.DockStyle.Fill;
+            Dock = DockStyle.Fill;
             Font = new System.Drawing.Font("Calibri", 12F);
-            Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            Margin = new Padding(10, 3, 10, 3);
         }
     }
 }

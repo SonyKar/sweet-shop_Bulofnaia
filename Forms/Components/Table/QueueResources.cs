@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace Bulofnaia.Forms.Components.Queue
+namespace Bulofnaia.Forms.Components.Table
 {
     public sealed class QueueResources : TableLayoutPanel
     {

@@ -1,6 +1,9 @@
-﻿using System.Windows.Forms;
+﻿using System.Collections;
+using System.Windows.Forms;
 using Bulofnaia.API.Entities;
+using Bulofnaia.API.Services;
 using Bulofnaia.Forms.Components.Table;
+using Bulofnaia.Forms.Entity;
 
 namespace Bulofnaia.Forms.Controllers
 {
@@ -8,16 +11,12 @@ namespace Bulofnaia.Forms.Controllers
     {
         public void Load(TableLayoutPanel layout)
         {
-            // read from db
-            Resource[] dummyData =
-            {
-                new Resource()
-            };
-            
+            Hashtable unmetResources = ResourceService.SelectAllUnmetResourceRequirements();
+
             layout.SuspendLayout();
             ClearTable(layout);
             
-            foreach (Resource data in dummyData)
+            foreach (Resource data in unmetResources.Values)
             {
                 int lastRowNumber = layout.RowCount;
 

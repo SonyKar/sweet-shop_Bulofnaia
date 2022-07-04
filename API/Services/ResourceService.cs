@@ -57,6 +57,8 @@ namespace Bulofnaia.API.Services
                     ((Resource)results[entry.Key]).Quantity *= -1;
                 }
             }
+            
+            DatabaseInitializer.CloseConnection();
             return results;
         }
     }

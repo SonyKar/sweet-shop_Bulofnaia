@@ -39,6 +39,11 @@ namespace Bulofnaia.Forms
             this.menuHeaderLabel = new System.Windows.Forms.Label();
             this.availableResourcesPageButton = new System.Windows.Forms.Button();
             this.unmetResourcePageButton = new System.Windows.Forms.Button();
+            this.unmetResourceLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.unmetResourceHeaderLayout = new System.Windows.Forms.Label();
+            this.unmetResourcesDisplay = new System.Windows.Forms.TableLayoutPanel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.availableResourceLayout = new System.Windows.Forms.TableLayoutPanel();
             this.createResourceButton = new System.Windows.Forms.Button();
             this.numberTextboxPlace = new System.Windows.Forms.TableLayoutPanel();
@@ -63,11 +68,6 @@ namespace Bulofnaia.Forms
             this.requestDatePicker = new System.Windows.Forms.DateTimePicker();
             this.createRequestButton = new System.Windows.Forms.Button();
             this.resourceSelectLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.unmetResourceLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.unmetResourceHeaderLayout = new System.Windows.Forms.Label();
-            this.unmetResourcesDisplay = new System.Windows.Forms.TableLayoutPanel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.queueLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.queueHeaderLabel = new System.Windows.Forms.Label();
             this.queueTable = new System.Windows.Forms.TableLayoutPanel();
@@ -80,12 +80,12 @@ namespace Bulofnaia.Forms
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.appLayout.SuspendLayout();
             this.menuLayout.SuspendLayout();
+            this.unmetResourceLayout.SuspendLayout();
+            this.unmetResourcesDisplay.SuspendLayout();
             this.availableResourceLayout.SuspendLayout();
             this.editResourceControls.SuspendLayout();
             this.resourcesTable.SuspendLayout();
             this.createRequestLayout.SuspendLayout();
-            this.unmetResourceLayout.SuspendLayout();
-            this.unmetResourcesDisplay.SuspendLayout();
             this.queueLayout.SuspendLayout();
             this.queueTable.SuspendLayout();
             this.SuspendLayout();
@@ -210,6 +210,83 @@ namespace Bulofnaia.Forms
             this.unmetResourcePageButton.Text = "Закуп";
             this.unmetResourcePageButton.UseVisualStyleBackColor = false;
             this.unmetResourcePageButton.Click += new System.EventHandler(this.unmetResourcesPageButton_Click);
+            // 
+            // unmetResourceLayout
+            // 
+            this.unmetResourceLayout.AutoScroll = true;
+            this.unmetResourceLayout.AutoSize = true;
+            this.unmetResourceLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.unmetResourceLayout.ColumnCount = 1;
+            this.unmetResourceLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.unmetResourceLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.unmetResourceLayout.Controls.Add(this.unmetResourceHeaderLayout, 0, 0);
+            this.unmetResourceLayout.Controls.Add(this.unmetResourcesDisplay, 0, 1);
+            this.unmetResourceLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.unmetResourceLayout.Location = new System.Drawing.Point(239, 3);
+            this.unmetResourceLayout.Name = "unmetResourceLayout";
+            this.unmetResourceLayout.RowCount = 2;
+            this.unmetResourceLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.94453F));
+            this.unmetResourceLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.05547F));
+            this.unmetResourceLayout.Size = new System.Drawing.Size(940, 667);
+            this.unmetResourceLayout.TabIndex = 5;
+            // 
+            // unmetResourceHeaderLayout
+            // 
+            this.unmetResourceHeaderLayout.AutoSize = true;
+            this.unmetResourceHeaderLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.unmetResourceHeaderLayout.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.unmetResourceHeaderLayout.Location = new System.Drawing.Point(10, 3);
+            this.unmetResourceHeaderLayout.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.unmetResourceHeaderLayout.Name = "unmetResourceHeaderLayout";
+            this.unmetResourceHeaderLayout.Size = new System.Drawing.Size(927, 67);
+            this.unmetResourceHeaderLayout.TabIndex = 1;
+            this.unmetResourceHeaderLayout.Text = "Недостающие ресуры";
+            this.unmetResourceHeaderLayout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // unmetResourcesDisplay
+            // 
+            this.unmetResourcesDisplay.AutoSize = true;
+            this.unmetResourcesDisplay.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.unmetResourcesDisplay.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
+            this.unmetResourcesDisplay.ColumnCount = 2;
+            this.unmetResourcesDisplay.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.40909F));
+            this.unmetResourcesDisplay.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.59091F));
+            this.unmetResourcesDisplay.Controls.Add(this.label2, 0, 0);
+            this.unmetResourcesDisplay.Controls.Add(this.label1, 0, 0);
+            this.unmetResourcesDisplay.Dock = System.Windows.Forms.DockStyle.Top;
+            this.unmetResourcesDisplay.Location = new System.Drawing.Point(150, 76);
+            this.unmetResourcesDisplay.Margin = new System.Windows.Forms.Padding(150, 3, 150, 3);
+            this.unmetResourcesDisplay.Name = "unmetResourcesDisplay";
+            this.unmetResourcesDisplay.RowCount = 1;
+            this.unmetResourcesDisplay.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.300509F));
+            this.unmetResourcesDisplay.Size = new System.Drawing.Size(640, 32);
+            this.unmetResourcesDisplay.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(415, 4);
+            this.label2.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(221, 24);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Количество";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(11, 4);
+            this.label1.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(390, 24);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Ресурс";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // availableResourceLayout
             // 
@@ -407,9 +484,9 @@ namespace Bulofnaia.Forms
             // 
             this.resourcesTable.AutoScroll = true;
             this.resourcesTable.AutoSize = true;
+            this.resourcesTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.resourcesTable.ColumnCount = 4;
             this.availableResourceLayout.SetColumnSpan(this.resourcesTable, 3);
-            this.resourcesTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.resourcesTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.resourcesTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.resourcesTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 15F));
@@ -423,7 +500,7 @@ namespace Bulofnaia.Forms
             this.resourcesTable.Name = "resourcesTable";
             this.resourcesTable.RowCount = 1;
             this.resourcesTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.resourcesTable.Size = new System.Drawing.Size(920, 30);
+            this.resourcesTable.Size = new System.Drawing.Size(920, 32);
             this.resourcesTable.TabIndex = 8;
             // 
             // quantityResourceLabel
@@ -431,10 +508,10 @@ namespace Bulofnaia.Forms
             this.quantityResourceLabel.AutoSize = true;
             this.quantityResourceLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.quantityResourceLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.quantityResourceLabel.Location = new System.Drawing.Point(647, 3);
+            this.quantityResourceLabel.Location = new System.Drawing.Point(646, 4);
             this.quantityResourceLabel.Margin = new System.Windows.Forms.Padding(3);
             this.quantityResourceLabel.Name = "quantityResourceLabel";
-            this.quantityResourceLabel.Size = new System.Drawing.Size(132, 24);
+            this.quantityResourceLabel.Size = new System.Drawing.Size(131, 24);
             this.quantityResourceLabel.TabIndex = 6;
             this.quantityResourceLabel.Text = "Количество";
             this.quantityResourceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -444,7 +521,7 @@ namespace Bulofnaia.Forms
             this.actionResourceLabel.AutoSize = true;
             this.actionResourceLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.actionResourceLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.actionResourceLabel.Location = new System.Drawing.Point(785, 3);
+            this.actionResourceLabel.Location = new System.Drawing.Point(784, 4);
             this.actionResourceLabel.Margin = new System.Windows.Forms.Padding(3);
             this.actionResourceLabel.Name = "actionResourceLabel";
             this.actionResourceLabel.Size = new System.Drawing.Size(132, 24);
@@ -457,10 +534,10 @@ namespace Bulofnaia.Forms
             this.idResourceLabel.AutoSize = true;
             this.idResourceLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.idResourceLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.idResourceLabel.Location = new System.Drawing.Point(3, 3);
+            this.idResourceLabel.Location = new System.Drawing.Point(4, 4);
             this.idResourceLabel.Margin = new System.Windows.Forms.Padding(3);
             this.idResourceLabel.Name = "idResourceLabel";
-            this.idResourceLabel.Size = new System.Drawing.Size(86, 24);
+            this.idResourceLabel.Size = new System.Drawing.Size(85, 24);
             this.idResourceLabel.TabIndex = 4;
             this.idResourceLabel.Text = "ID";
             this.idResourceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -470,10 +547,10 @@ namespace Bulofnaia.Forms
             this.nameResourceLabel.AutoSize = true;
             this.nameResourceLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.nameResourceLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.nameResourceLabel.Location = new System.Drawing.Point(95, 3);
+            this.nameResourceLabel.Location = new System.Drawing.Point(96, 4);
             this.nameResourceLabel.Margin = new System.Windows.Forms.Padding(3);
             this.nameResourceLabel.Name = "nameResourceLabel";
-            this.nameResourceLabel.Size = new System.Drawing.Size(546, 24);
+            this.nameResourceLabel.Size = new System.Drawing.Size(543, 24);
             this.nameResourceLabel.TabIndex = 3;
             this.nameResourceLabel.Text = "Название";
             this.nameResourceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -582,7 +659,6 @@ namespace Bulofnaia.Forms
             this.resourceSelectLayout.AutoSize = true;
             this.resourceSelectLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.resourceSelectLayout.ColumnCount = 3;
-            this.createRequestLayout.SetColumnSpan(this.resourceSelectLayout, 2);
             this.resourceSelectLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.resourceSelectLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
             this.resourceSelectLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
@@ -591,81 +667,6 @@ namespace Bulofnaia.Forms
             this.resourceSelectLayout.Name = "resourceSelectLayout";
             this.resourceSelectLayout.Size = new System.Drawing.Size(929, 0);
             this.resourceSelectLayout.TabIndex = 4;
-            // 
-            // unmetResourceLayout
-            // 
-            this.unmetResourceLayout.ColumnCount = 1;
-            this.unmetResourceLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.unmetResourceLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.unmetResourceLayout.Controls.Add(this.unmetResourceHeaderLayout, 0, 0);
-            this.unmetResourceLayout.Controls.Add(this.unmetResourcesDisplay, 0, 1);
-            this.unmetResourceLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.unmetResourceLayout.Location = new System.Drawing.Point(239, 3);
-            this.unmetResourceLayout.Name = "unmetResourceLayout";
-            this.unmetResourceLayout.RowCount = 2;
-            this.unmetResourceLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.94453F));
-            this.unmetResourceLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.05547F));
-            this.unmetResourceLayout.Size = new System.Drawing.Size(940, 667);
-            this.unmetResourceLayout.TabIndex = 5;
-            // 
-            // unmetResourceHeaderLayout
-            // 
-            this.unmetResourceHeaderLayout.AutoSize = true;
-            this.unmetResourceHeaderLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.unmetResourceHeaderLayout.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.unmetResourceHeaderLayout.Location = new System.Drawing.Point(10, 3);
-            this.unmetResourceHeaderLayout.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.unmetResourceHeaderLayout.Name = "unmetResourceHeaderLayout";
-            this.unmetResourceHeaderLayout.Size = new System.Drawing.Size(927, 67);
-            this.unmetResourceHeaderLayout.TabIndex = 1;
-            this.unmetResourceHeaderLayout.Text = "Недостающие ресуры";
-            this.unmetResourceHeaderLayout.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // unmetResourcesDisplay
-            // 
-            this.unmetResourcesDisplay.AutoScroll = true;
-            this.unmetResourcesDisplay.AutoSize = true;
-            this.unmetResourcesDisplay.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.unmetResourcesDisplay.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.unmetResourcesDisplay.ColumnCount = 2;
-            this.unmetResourcesDisplay.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 63.40909F));
-            this.unmetResourcesDisplay.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 36.59091F));
-            this.unmetResourcesDisplay.Controls.Add(this.label2, 0, 0);
-            this.unmetResourcesDisplay.Controls.Add(this.label1, 0, 0);
-            this.unmetResourcesDisplay.Dock = System.Windows.Forms.DockStyle.Top;
-            this.unmetResourcesDisplay.Location = new System.Drawing.Point(150, 76);
-            this.unmetResourcesDisplay.Margin = new System.Windows.Forms.Padding(150, 3, 150, 3);
-            this.unmetResourcesDisplay.Name = "unmetResourcesDisplay";
-            this.unmetResourcesDisplay.RowCount = 1;
-            this.unmetResourcesDisplay.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7.300509F));
-            this.unmetResourcesDisplay.Size = new System.Drawing.Size(640, 30);
-            this.unmetResourcesDisplay.TabIndex = 2;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
-            this.label2.Location = new System.Drawing.Point(415, 3);
-            this.label2.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(222, 24);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Количество";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(10, 3);
-            this.label1.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(392, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Ресурс";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // queueLayout
             // 
@@ -802,8 +803,13 @@ namespace Bulofnaia.Forms
             this.Name = "App";
             this.Text = "Bulofnaia";
             this.appLayout.ResumeLayout(false);
+            this.appLayout.PerformLayout();
             this.menuLayout.ResumeLayout(false);
             this.menuLayout.PerformLayout();
+            this.unmetResourceLayout.ResumeLayout(false);
+            this.unmetResourceLayout.PerformLayout();
+            this.unmetResourcesDisplay.ResumeLayout(false);
+            this.unmetResourcesDisplay.PerformLayout();
             this.availableResourceLayout.ResumeLayout(false);
             this.availableResourceLayout.PerformLayout();
             this.editResourceControls.ResumeLayout(false);
@@ -812,10 +818,6 @@ namespace Bulofnaia.Forms
             this.resourcesTable.PerformLayout();
             this.createRequestLayout.ResumeLayout(false);
             this.createRequestLayout.PerformLayout();
-            this.unmetResourceLayout.ResumeLayout(false);
-            this.unmetResourceLayout.PerformLayout();
-            this.unmetResourcesDisplay.ResumeLayout(false);
-            this.unmetResourcesDisplay.PerformLayout();
             this.queueLayout.ResumeLayout(false);
             this.queueLayout.PerformLayout();
             this.queueTable.ResumeLayout(false);

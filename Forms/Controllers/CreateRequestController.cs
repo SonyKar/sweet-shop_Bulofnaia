@@ -52,7 +52,7 @@ namespace Bulofnaia.Forms.Controllers
             Hashtable resourceToQuantity = new Hashtable();
             for (int row = 0; row < _parent.resourceSelectLayout.RowCount; row++)
             {
-                int resourceId = ((ComboBox)_parent.resourceSelectLayout.GetControlFromPosition(0, row)).SelectedIndex;
+                int resourceId = (int)((ComboBoxItem)((ComboBox)_parent.resourceSelectLayout.GetControlFromPosition(0, 0)).SelectedItem).Value;
                 String quantityText = _parent.resourceSelectLayout.GetControlFromPosition(1, row).Text;
                 float quantity = 0;
                 if (quantityText != "") quantity = float.Parse(quantityText);

@@ -39,6 +39,13 @@ namespace Bulofnaia.Forms
             this.menuHeaderLabel = new System.Windows.Forms.Label();
             this.availableResourcesPageButton = new System.Windows.Forms.Button();
             this.unmetResourcePageButton = new System.Windows.Forms.Button();
+            this.createRequestLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.createRequestHeaderLabel = new System.Windows.Forms.Label();
+            this.requestName = new System.Windows.Forms.TextBox();
+            this.addResourceToRequestButton = new System.Windows.Forms.Button();
+            this.resourceSelectLayout = new System.Windows.Forms.TableLayoutPanel();
+            this.requestDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.createRequestButton = new System.Windows.Forms.Button();
             this.unmetResourceLayout = new System.Windows.Forms.TableLayoutPanel();
             this.unmetResourceHeaderLayout = new System.Windows.Forms.Label();
             this.unmetResourcesDisplay = new System.Windows.Forms.TableLayoutPanel();
@@ -61,13 +68,6 @@ namespace Bulofnaia.Forms
             this.actionResourceLabel = new System.Windows.Forms.Label();
             this.idResourceLabel = new System.Windows.Forms.Label();
             this.nameResourceLabel = new System.Windows.Forms.Label();
-            this.createRequestLayout = new System.Windows.Forms.TableLayoutPanel();
-            this.createRequestHeaderLabel = new System.Windows.Forms.Label();
-            this.requestName = new System.Windows.Forms.TextBox();
-            this.addResourceToRequestButton = new System.Windows.Forms.Button();
-            this.requestDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.createRequestButton = new System.Windows.Forms.Button();
-            this.resourceSelectLayout = new System.Windows.Forms.TableLayoutPanel();
             this.queueLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.queueHeaderLabel = new System.Windows.Forms.Label();
             this.queueTable = new System.Windows.Forms.TableLayoutPanel();
@@ -80,12 +80,12 @@ namespace Bulofnaia.Forms
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.appLayout.SuspendLayout();
             this.menuLayout.SuspendLayout();
+            this.createRequestLayout.SuspendLayout();
             this.unmetResourceLayout.SuspendLayout();
             this.unmetResourcesDisplay.SuspendLayout();
             this.availableResourceLayout.SuspendLayout();
             this.editResourceControls.SuspendLayout();
             this.resourcesTable.SuspendLayout();
-            this.createRequestLayout.SuspendLayout();
             this.queueLayout.SuspendLayout();
             this.queueTable.SuspendLayout();
             this.SuspendLayout();
@@ -210,6 +210,120 @@ namespace Bulofnaia.Forms
             this.unmetResourcePageButton.Text = "Закуп";
             this.unmetResourcePageButton.UseVisualStyleBackColor = false;
             this.unmetResourcePageButton.Click += new System.EventHandler(this.unmetResourcesPageButton_Click);
+            // 
+            // createRequestLayout
+            // 
+            this.createRequestLayout.AutoScroll = true;
+            this.createRequestLayout.ColumnCount = 2;
+            this.createRequestLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.createRequestLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.createRequestLayout.Controls.Add(this.createRequestHeaderLabel, 0, 0);
+            this.createRequestLayout.Controls.Add(this.requestName, 0, 1);
+            this.createRequestLayout.Controls.Add(this.addResourceToRequestButton, 1, 1);
+            this.createRequestLayout.Controls.Add(this.resourceSelectLayout, 0, 3);
+            this.createRequestLayout.Controls.Add(this.requestDatePicker, 0, 4);
+            this.createRequestLayout.Controls.Add(this.createRequestButton, 1, 4);
+            this.createRequestLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.createRequestLayout.Location = new System.Drawing.Point(239, 3);
+            this.createRequestLayout.Name = "createRequestLayout";
+            this.createRequestLayout.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
+            this.createRequestLayout.RowCount = 5;
+            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
+            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
+            this.createRequestLayout.Size = new System.Drawing.Size(940, 667);
+            this.createRequestLayout.TabIndex = 5;
+            // 
+            // createRequestHeaderLabel
+            // 
+            this.createRequestHeaderLabel.AutoSize = true;
+            this.createRequestLayout.SetColumnSpan(this.createRequestHeaderLabel, 2);
+            this.createRequestHeaderLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.createRequestHeaderLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createRequestHeaderLabel.Location = new System.Drawing.Point(5, 0);
+            this.createRequestHeaderLabel.Margin = new System.Windows.Forms.Padding(0);
+            this.createRequestHeaderLabel.Name = "createRequestHeaderLabel";
+            this.createRequestHeaderLabel.Size = new System.Drawing.Size(935, 67);
+            this.createRequestHeaderLabel.TabIndex = 1;
+            this.createRequestHeaderLabel.Text = "Добавить заявку";
+            this.createRequestHeaderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // requestName
+            // 
+            this.createRequestLayout.SetColumnSpan(this.requestName, 2);
+            this.requestName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.requestName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.requestName.Location = new System.Drawing.Point(15, 70);
+            this.requestName.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
+            this.requestName.Name = "requestName";
+            this.requestName.Size = new System.Drawing.Size(915, 32);
+            this.requestName.TabIndex = 7;
+            this.requestName.Text = "Название";
+            // 
+            // addResourceToRequestButton
+            // 
+            this.addResourceToRequestButton.AutoSize = true;
+            this.addResourceToRequestButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.addResourceToRequestButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.addResourceToRequestButton.FlatAppearance.BorderSize = 0;
+            this.addResourceToRequestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addResourceToRequestButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.addResourceToRequestButton.ForeColor = System.Drawing.Color.White;
+            this.addResourceToRequestButton.Location = new System.Drawing.Point(8, 117);
+            this.addResourceToRequestButton.Name = "addResourceToRequestButton";
+            this.addResourceToRequestButton.Size = new System.Drawing.Size(166, 34);
+            this.addResourceToRequestButton.TabIndex = 3;
+            this.addResourceToRequestButton.Text = "Добавить ресурс";
+            this.addResourceToRequestButton.UseVisualStyleBackColor = false;
+            this.addResourceToRequestButton.Click += new System.EventHandler(this.addResourceToRequestButton_Click);
+            // 
+            // resourceSelectLayout
+            // 
+            this.resourceSelectLayout.AutoScroll = true;
+            this.resourceSelectLayout.AutoSize = true;
+            this.resourceSelectLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.resourceSelectLayout.ColumnCount = 3;
+            this.createRequestLayout.SetColumnSpan(this.resourceSelectLayout, 2);
+            this.resourceSelectLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.resourceSelectLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.resourceSelectLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
+            this.resourceSelectLayout.Dock = System.Windows.Forms.DockStyle.Top;
+            this.resourceSelectLayout.Location = new System.Drawing.Point(8, 164);
+            this.resourceSelectLayout.Name = "resourceSelectLayout";
+            this.resourceSelectLayout.Size = new System.Drawing.Size(461, 0);
+            this.resourceSelectLayout.TabIndex = 4;
+            // 
+            // requestDatePicker
+            // 
+            this.requestDatePicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.requestDatePicker.Font = new System.Drawing.Font("Calibri", 12F);
+            this.requestDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.requestDatePicker.Location = new System.Drawing.Point(55, 635);
+            this.requestDatePicker.Margin = new System.Windows.Forms.Padding(50, 3, 50, 3);
+            this.requestDatePicker.Name = "requestDatePicker";
+            this.requestDatePicker.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.requestDatePicker.Size = new System.Drawing.Size(367, 32);
+            this.requestDatePicker.TabIndex = 2;
+            this.requestDatePicker.Value = new System.DateTime(2022, 7, 3, 11, 56, 12, 0);
+            // 
+            // createRequestButton
+            // 
+            this.createRequestButton.BackColor = System.Drawing.Color.DodgerBlue;
+            this.createRequestButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.createRequestButton.FlatAppearance.BorderSize = 0;
+            this.createRequestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createRequestButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createRequestButton.ForeColor = System.Drawing.Color.White;
+            this.createRequestButton.Location = new System.Drawing.Point(522, 635);
+            this.createRequestButton.Margin = new System.Windows.Forms.Padding(50, 3, 50, 3);
+            this.createRequestButton.Name = "createRequestButton";
+            this.createRequestButton.Size = new System.Drawing.Size(368, 29);
+            this.createRequestButton.TabIndex = 8;
+            this.createRequestButton.Text = "Создать заявку";
+            this.createRequestButton.UseVisualStyleBackColor = false;
+            this.createRequestButton.Click += new System.EventHandler(this.createRequestButton_Click);
             // 
             // unmetResourceLayout
             // 
@@ -482,7 +596,6 @@ namespace Bulofnaia.Forms
             // 
             // resourcesTable
             // 
-            this.resourcesTable.AutoScroll = true;
             this.resourcesTable.AutoSize = true;
             this.resourcesTable.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
             this.resourcesTable.ColumnCount = 4;
@@ -554,119 +667,6 @@ namespace Bulofnaia.Forms
             this.nameResourceLabel.TabIndex = 3;
             this.nameResourceLabel.Text = "Название";
             this.nameResourceLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // createRequestLayout
-            // 
-            this.createRequestLayout.AutoScroll = true;
-            this.createRequestLayout.ColumnCount = 2;
-            this.createRequestLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.createRequestLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.createRequestLayout.Controls.Add(this.createRequestHeaderLabel, 0, 0);
-            this.createRequestLayout.Controls.Add(this.requestName, 0, 1);
-            this.createRequestLayout.Controls.Add(this.addResourceToRequestButton, 1, 1);
-            this.createRequestLayout.Controls.Add(this.resourceSelectLayout, 0, 3);
-            this.createRequestLayout.Controls.Add(this.requestDatePicker, 0, 4);
-            this.createRequestLayout.Controls.Add(this.createRequestButton, 1, 4);
-            this.createRequestLayout.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.createRequestLayout.Location = new System.Drawing.Point(239, 3);
-            this.createRequestLayout.Name = "createRequestLayout";
-            this.createRequestLayout.Padding = new System.Windows.Forms.Padding(5, 0, 0, 0);
-            this.createRequestLayout.RowCount = 5;
-            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 7F));
-            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.createRequestLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 5F));
-            this.createRequestLayout.Size = new System.Drawing.Size(940, 667);
-            this.createRequestLayout.TabIndex = 5;
-            // 
-            // createRequestHeaderLabel
-            // 
-            this.createRequestHeaderLabel.AutoSize = true;
-            this.createRequestLayout.SetColumnSpan(this.createRequestHeaderLabel, 2);
-            this.createRequestHeaderLabel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.createRequestHeaderLabel.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createRequestHeaderLabel.Location = new System.Drawing.Point(5, 0);
-            this.createRequestHeaderLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.createRequestHeaderLabel.Name = "createRequestHeaderLabel";
-            this.createRequestHeaderLabel.Size = new System.Drawing.Size(935, 67);
-            this.createRequestHeaderLabel.TabIndex = 1;
-            this.createRequestHeaderLabel.Text = "Добавить заявку";
-            this.createRequestHeaderLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // requestName
-            // 
-            this.createRequestLayout.SetColumnSpan(this.requestName, 2);
-            this.requestName.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.requestName.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.requestName.Location = new System.Drawing.Point(15, 70);
-            this.requestName.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
-            this.requestName.Name = "requestName";
-            this.requestName.Size = new System.Drawing.Size(915, 32);
-            this.requestName.TabIndex = 7;
-            this.requestName.Text = "Название";
-            // 
-            // addResourceToRequestButton
-            // 
-            this.addResourceToRequestButton.AutoSize = true;
-            this.addResourceToRequestButton.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.addResourceToRequestButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.addResourceToRequestButton.FlatAppearance.BorderSize = 0;
-            this.addResourceToRequestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.addResourceToRequestButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addResourceToRequestButton.ForeColor = System.Drawing.Color.White;
-            this.addResourceToRequestButton.Location = new System.Drawing.Point(8, 117);
-            this.addResourceToRequestButton.Name = "addResourceToRequestButton";
-            this.addResourceToRequestButton.Size = new System.Drawing.Size(166, 34);
-            this.addResourceToRequestButton.TabIndex = 3;
-            this.addResourceToRequestButton.Text = "Добавить ресурс";
-            this.addResourceToRequestButton.UseVisualStyleBackColor = false;
-            this.addResourceToRequestButton.Click += new System.EventHandler(this.addResourceToRequestButton_Click);
-            // 
-            // requestDatePicker
-            // 
-            this.requestDatePicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.requestDatePicker.Font = new System.Drawing.Font("Calibri", 12F);
-            this.requestDatePicker.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.requestDatePicker.Location = new System.Drawing.Point(55, 635);
-            this.requestDatePicker.Margin = new System.Windows.Forms.Padding(50, 3, 50, 3);
-            this.requestDatePicker.Name = "requestDatePicker";
-            this.requestDatePicker.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.requestDatePicker.Size = new System.Drawing.Size(367, 32);
-            this.requestDatePicker.TabIndex = 2;
-            this.requestDatePicker.Value = new System.DateTime(2022, 7, 3, 11, 56, 12, 0);
-            // 
-            // createRequestButton
-            // 
-            this.createRequestButton.BackColor = System.Drawing.Color.DodgerBlue;
-            this.createRequestButton.Dock = System.Windows.Forms.DockStyle.Top;
-            this.createRequestButton.FlatAppearance.BorderSize = 0;
-            this.createRequestButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createRequestButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.createRequestButton.ForeColor = System.Drawing.Color.White;
-            this.createRequestButton.Location = new System.Drawing.Point(522, 635);
-            this.createRequestButton.Margin = new System.Windows.Forms.Padding(50, 3, 50, 3);
-            this.createRequestButton.Name = "createRequestButton";
-            this.createRequestButton.Size = new System.Drawing.Size(368, 29);
-            this.createRequestButton.TabIndex = 8;
-            this.createRequestButton.Text = "Создать заявку";
-            this.createRequestButton.UseVisualStyleBackColor = false;
-            this.createRequestButton.Click += new System.EventHandler(this.createRequestButton_Click);
-            // 
-            // resourceSelectLayout
-            // 
-            this.resourceSelectLayout.AutoScroll = true;
-            this.resourceSelectLayout.AutoSize = true;
-            this.resourceSelectLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.resourceSelectLayout.ColumnCount = 3;
-            this.resourceSelectLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.resourceSelectLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.resourceSelectLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33F));
-            this.resourceSelectLayout.Dock = System.Windows.Forms.DockStyle.Top;
-            this.resourceSelectLayout.Location = new System.Drawing.Point(8, 164);
-            this.resourceSelectLayout.Name = "resourceSelectLayout";
-            this.resourceSelectLayout.Size = new System.Drawing.Size(929, 0);
-            this.resourceSelectLayout.TabIndex = 4;
             // 
             // queueLayout
             // 
@@ -803,9 +803,10 @@ namespace Bulofnaia.Forms
             this.Name = "App";
             this.Text = "Bulofnaia";
             this.appLayout.ResumeLayout(false);
-            this.appLayout.PerformLayout();
             this.menuLayout.ResumeLayout(false);
             this.menuLayout.PerformLayout();
+            this.createRequestLayout.ResumeLayout(false);
+            this.createRequestLayout.PerformLayout();
             this.unmetResourceLayout.ResumeLayout(false);
             this.unmetResourceLayout.PerformLayout();
             this.unmetResourcesDisplay.ResumeLayout(false);
@@ -816,8 +817,6 @@ namespace Bulofnaia.Forms
             this.editResourceControls.PerformLayout();
             this.resourcesTable.ResumeLayout(false);
             this.resourcesTable.PerformLayout();
-            this.createRequestLayout.ResumeLayout(false);
-            this.createRequestLayout.PerformLayout();
             this.queueLayout.ResumeLayout(false);
             this.queueLayout.PerformLayout();
             this.queueTable.ResumeLayout(false);
@@ -850,7 +849,7 @@ namespace Bulofnaia.Forms
         private System.Windows.Forms.Label editResourceHeaderLabel;
         private System.Windows.Forms.Label resourcesHeaderLabel;
 
-        private System.Windows.Forms.TableLayoutPanel availableResourceLayout;
+        public System.Windows.Forms.TableLayoutPanel availableResourceLayout;
 
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;

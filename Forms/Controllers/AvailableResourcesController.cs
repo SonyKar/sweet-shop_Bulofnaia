@@ -46,6 +46,7 @@ namespace Bulofnaia.Forms.Controllers
 
         public void InitializeComponents()
         {
+            _parent.availableResourceLayout.SuspendLayout();
             ClearTable(_parent.selectResourcePlace);
             
             ArrayList resources = ResourceService.SelectResourcesWithUnitNames();
@@ -77,14 +78,19 @@ namespace Bulofnaia.Forms.Controllers
             _parent.selectUnitPlace.Controls.Add(new ResourceSelect(unitsData));
             
             Load(_parent.resourcesTable);
+            _parent.availableResourceLayout.ResumeLayout();
         }
 
-        public void EditResourceNumber()
+        public void EditResourceNumber(bool isSum)
         {
             TextBox quantityTextBox = (TextBox)_parent.numberTextboxPlace.GetControlFromPosition(0, 0);
-            int quantity = Convert.ToInt32(quantityTextBox.Text);
+            float quantity = float.Parse(quantityTextBox.Text);
+            quantityTextBox.Text = "";
             
-            int resourceId = ((ComboBox)_parent.selectResourcePlace.GetControlFromPosition(0, 0)).SelectedIndex;
+            int resourceId = (int)((ComboBoxItem)((ComboBox)_parent.selectResourcePlace.GetControlFromPosition(0, 0)).SelectedItem).Value;
+            
+            if (isSum) ResourceRepository.UpdateAddQuantityById(resourceId, quantity);
+            else ResourceRepository.UpdateSubstractQuantityById(resourceId, quantity);
         }
 
         public void CreateResource()
@@ -93,6 +99,9 @@ namespace Bulofnaia.Forms.Controllers
             _parent.newResourceName.Text = "Название";
             
             int unitId = ((ComboBox)_parent.selectUnitPlace.GetControlFromPosition(0, 0)).SelectedIndex;
+
+            Resource newResource = new Resource(resourceName, 0, unitId);
+            ResourceRepository.InsertResource(newResource);
         }
 
         public override void OnDeleteHandler(TableLayoutPanel table, int rowNumber)

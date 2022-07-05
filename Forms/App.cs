@@ -76,14 +76,14 @@ namespace Bulofnaia.Forms
         private void plusResourceButton_Click(object sender, EventArgs e)
         {
             AvailableResourcesController controller = new AvailableResourcesController(this);
-            controller.EditResourceNumber();
+            controller.EditResourceNumber(true);
             controller.InitializeComponents();
         }
 
         private void minusResourceButton_Click(object sender, EventArgs e)
         {
             AvailableResourcesController controller = new AvailableResourcesController(this);
-            controller.EditResourceNumber();
+            controller.EditResourceNumber(false);
             controller.InitializeComponents();
         }
     }

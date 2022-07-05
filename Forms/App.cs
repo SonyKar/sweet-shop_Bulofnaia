@@ -14,7 +14,7 @@ namespace Bulofnaia.Forms
 
         private void ResetButtonColors(Button selectedButton)
         {
-            Button[] buttons = {newRequestPageButton, queuePageButton, availableResourcesPageButton, unmetResourcePageButton};
+            Button[] buttons = {newRequestPageButton, queuePageButton, availableResourcesPageButton, optimalRefillPageButton};
             foreach (var button in buttons)
             {
                 button.BackColor = Color.White;
@@ -48,9 +48,9 @@ namespace Bulofnaia.Forms
 
         private void unmetResourcesPageButton_Click(object sender, EventArgs e)
         {
-            UnmetResourcesController controller = new UnmetResourcesController();
-            controller.Load(unmetResourcesDisplay);
-            Navigation.NavigateNewRequest(unmetResourceLayout, appLayout);
+            OptimalRefillController controller = new OptimalRefillController();
+            controller.Load(optimalRefillDisplay);
+            Navigation.NavigateNewRequest(optimalRefillLayout, appLayout);
             ResetButtonColors((Button)sender);
         }
         
@@ -73,17 +73,10 @@ namespace Bulofnaia.Forms
             controller.InitializeComponents();
         }
 
-        private void plusResourceButton_Click(object sender, EventArgs e)
+        private void editResourceButton_Click(object sender, EventArgs e)
         {
             AvailableResourcesController controller = new AvailableResourcesController(this);
-            controller.EditResourceNumber(true);
-            controller.InitializeComponents();
-        }
-
-        private void minusResourceButton_Click(object sender, EventArgs e)
-        {
-            AvailableResourcesController controller = new AvailableResourcesController(this);
-            controller.EditResourceNumber(false);
+            controller.EditResourceNumber();
             controller.InitializeComponents();
         }
     }

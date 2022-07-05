@@ -25,9 +25,9 @@ namespace Bulofnaia.Forms.Controllers
                     queueResources.Controls.Add(new TableInput(resource.Name + " " + resource.Quantity + resource.UnitName));
                 }
 
-                bool isPossible = data.UnmetRequirements.Count == 0;
+                // bool isPossible = data.UnmetRequirements.Count == 0;
                 RemoveRowButton button = new RemoveRowButton(this);
-                if (!isPossible) button.Enabled = false;
+                // if (!isPossible) button.Enabled = false;
                 
                 queueTable.Controls.Add(new TableInput(data.Id.ToString()), 0, lastRowNumber);
                 queueTable.Controls.Add(new TableInput(data.Name), 1, lastRowNumber);
@@ -36,24 +36,24 @@ namespace Bulofnaia.Forms.Controllers
                 queueTable.Controls.Add(button, 4, lastRowNumber);
                 queueTable.RowCount++;
                 
-                if (isPossible)
-                {
-                    Color color = Color.FromArgb(170,234,191);
-                    queueTable.GetControlFromPosition(0, lastRowNumber).BackColor = color;
-                    queueTable.GetControlFromPosition(1, lastRowNumber).BackColor = color;
-                    queueTable.GetControlFromPosition(2, lastRowNumber).BackColor = color;
-                    queueTable.GetControlFromPosition(3, lastRowNumber).BackColor = color;
-                    queueTable.GetControlFromPosition(4, lastRowNumber).BackColor = color;
-                }
-                else
-                {
-                    Color color = Color.FromArgb(235,189,185);
-                    queueTable.GetControlFromPosition(0, lastRowNumber).BackColor = color;
-                    queueTable.GetControlFromPosition(1, lastRowNumber).BackColor = color;
-                    queueTable.GetControlFromPosition(2, lastRowNumber).BackColor = color;
-                    queueTable.GetControlFromPosition(3, lastRowNumber).BackColor = color;
-                    queueTable.GetControlFromPosition(4, lastRowNumber).BackColor = color;
-                }
+                // if (isPossible)
+                // {
+                //     Color color = Color.FromArgb(170,234,191);
+                //     queueTable.GetControlFromPosition(0, lastRowNumber).BackColor = color;
+                //     queueTable.GetControlFromPosition(1, lastRowNumber).BackColor = color;
+                //     queueTable.GetControlFromPosition(2, lastRowNumber).BackColor = color;
+                //     queueTable.GetControlFromPosition(3, lastRowNumber).BackColor = color;
+                //     queueTable.GetControlFromPosition(4, lastRowNumber).BackColor = color;
+                // }
+                // else
+                // {
+                //     Color color = Color.FromArgb(235,189,185);
+                //     queueTable.GetControlFromPosition(0, lastRowNumber).BackColor = color;
+                //     queueTable.GetControlFromPosition(1, lastRowNumber).BackColor = color;
+                //     queueTable.GetControlFromPosition(2, lastRowNumber).BackColor = color;
+                //     queueTable.GetControlFromPosition(3, lastRowNumber).BackColor = color;
+                //     queueTable.GetControlFromPosition(4, lastRowNumber).BackColor = color;
+                // }
             }
             queueTable.ResumeLayout();
         }

@@ -87,7 +87,7 @@
     <Compile Include="Forms\Controllers\TableController.cs" />
     <Compile Include="Forms\Controllers\Navigation.cs" />
     <Compile Include="Forms\Controllers\QueueController.cs" />
-    <Compile Include="Forms\Controllers\UnmetResourcesController.cs" />
+    <Compile Include="Forms\Controllers\OptimalRefillController.cs" />
     <Compile Include="Forms\Entity\ComboBoxItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

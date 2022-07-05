@@ -39,8 +39,9 @@ namespace Bulofnaia.Forms.Controllers
 
             layout.Controls.Add(new TableInput(resource.Id.ToString()), 0, lastRowNumber);
             layout.Controls.Add(new TableInput(resource.Name), 1, lastRowNumber);
-            layout.Controls.Add(new TableInput(resource.Quantity + " " + resource.UnitName), 2, lastRowNumber);
-            layout.Controls.Add(new RemoveRowButton(this, "X"), 3, lastRowNumber);
+            layout.Controls.Add(new TableInput(resource.Quantity + " " + resource.UnitName), 2, lastRowNumber); // storage price
+            layout.Controls.Add(new TableInput(resource.Quantity + " " + resource.UnitName), 3, lastRowNumber); // expenses
+            layout.Controls.Add(new RemoveRowButton(this, "X"), 4, lastRowNumber);
             layout.RowCount++;
         }
 
@@ -61,8 +62,17 @@ namespace Bulofnaia.Forms.Controllers
             
             _parent.selectResourcePlace.Controls.Add(new ResourceSelect(data));
             
-            ClearTable(_parent.numberTextboxPlace);
-            _parent.numberTextboxPlace.Controls.Add(new TableNumberTextBox());
+            ClearTable(_parent.addStoragePricePlace);
+            _parent.addStoragePricePlace.Controls.Add(new TableNumberTextBox("Цена за хранение"));
+            
+            ClearTable(_parent.addExpensesPlace);
+            _parent.addExpensesPlace.Controls.Add(new TableNumberTextBox("Затраты"));
+            
+            ClearTable(_parent.editStoragePricePlace);
+            _parent.editStoragePricePlace.Controls.Add(new TableNumberTextBox("Цена за хранение"));
+            
+            ClearTable(_parent.editExpensesPlace);
+            _parent.editExpensesPlace.Controls.Add(new TableNumberTextBox("Затраты"));
             
             ArrayList units = UnitRepository.GetAllUnits();
 
@@ -81,16 +91,19 @@ namespace Bulofnaia.Forms.Controllers
             _parent.availableResourceLayout.ResumeLayout();
         }
 
-        public void EditResourceNumber(bool isSum)
+        public void EditResourceNumber()
         {
-            TextBox quantityTextBox = (TextBox)_parent.numberTextboxPlace.GetControlFromPosition(0, 0);
-            float quantity = float.Parse(quantityTextBox.Text);
-            quantityTextBox.Text = "";
+            TextBox storagePriceTextBox = (TextBox)_parent.editStoragePricePlace.GetControlFromPosition(0, 0);
+            float storagePrice = float.Parse(storagePriceTextBox.Text);
+            storagePriceTextBox.Dispose();
             
+            TextBox expensesTextBox = (TextBox)_parent.editExpensesPlace.GetControlFromPosition(0, 0);
+            float expenses = float.Parse(expensesTextBox.Text);
+            expensesTextBox.Dispose();
+
             int resourceId = (int)((ComboBoxItem)((ComboBox)_parent.selectResourcePlace.GetControlFromPosition(0, 0)).SelectedItem).Value;
-            
-            if (isSum) ResourceRepository.UpdateAddQuantityById(resourceId, quantity);
-            else ResourceRepository.UpdateSubstractQuantityById(resourceId, quantity);
+
+            // update in DB
         }
 
         public void CreateResource()
@@ -100,14 +113,23 @@ namespace Bulofnaia.Forms.Controllers
             
             int unitId = ((ComboBox)_parent.selectUnitPlace.GetControlFromPosition(0, 0)).SelectedIndex;
 
-            Resource newResource = new Resource(resourceName, 0, unitId);
-            ResourceRepository.InsertResource(newResource);
+            TextBox storagePriceTextBox = (TextBox)_parent.addStoragePricePlace.GetControlFromPosition(0, 0);
+            float storagePrice = float.Parse(storagePriceTextBox.Text);
+            storagePriceTextBox.Dispose();
+            
+            TextBox expensesTextBox = (TextBox)_parent.addExpensesPlace.GetControlFromPosition(0, 0);
+            float expenses = float.Parse(expensesTextBox.Text);
+            expensesTextBox.Dispose();
+            
+            // Add to DB
         }
 
         public override void OnDeleteHandler(TableLayoutPanel table, int rowNumber)
         {
             int resourceId = Convert.ToInt32(table.GetControlFromPosition(0, rowNumber).Text);
             base.OnDeleteHandler(table, rowNumber);
+            
+            // Delete resource from DB
         }
     }
 }

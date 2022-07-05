@@ -8,6 +8,8 @@ namespace Bulofnaia.Forms.Components.Table
         {
             Dock = DockStyle.Fill;
             ColumnCount = 1;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
         }
     }
 }

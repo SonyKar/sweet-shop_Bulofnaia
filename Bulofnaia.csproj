@@ -77,6 +77,7 @@
     <Compile Include="Forms\App.Designer.cs">
       <DependentUpon>App.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Components\Table\ProfileData.cs" />
     <Compile Include="Forms\Components\Table\ResourceSelect.cs" />
     <Compile Include="Forms\Components\Table\TableInput.cs" />
     <Compile Include="Forms\Components\Table\RemoveRowButton.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Forms\Components\Table\TableNumberTextBox.cs" />
     <Compile Include="Forms\Controllers\AvailableResourcesController.cs" />
     <Compile Include="Forms\Controllers\CreateRequestController.cs" />
+    <Compile Include="Forms\Controllers\ProfilesController.cs" />
     <Compile Include="Forms\Controllers\TableController.cs" />
     <Compile Include="Forms\Controllers\Navigation.cs" />
     <Compile Include="Forms\Controllers\QueueController.cs" />

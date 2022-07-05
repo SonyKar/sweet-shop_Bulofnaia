@@ -14,7 +14,7 @@ namespace Bulofnaia.Forms
 
         private void ResetButtonColors(Button selectedButton)
         {
-            Button[] buttons = {newRequestPageButton, queuePageButton, availableResourcesPageButton, optimalRefillPageButton};
+            Button[] buttons = {newRequestPageButton, queuePageButton, availableResourcesPageButton, optimalRefillPageButton, profilesPageButton};
             foreach (var button in buttons)
             {
                 button.BackColor = Color.White;
@@ -46,11 +46,19 @@ namespace Bulofnaia.Forms
             ResetButtonColors((Button)sender);
         }
 
-        private void unmetResourcesPageButton_Click(object sender, EventArgs e)
+        private void optimalRefillPageButton_Click(object sender, EventArgs e)
         {
             OptimalRefillController controller = new OptimalRefillController();
             controller.Load(optimalRefillDisplay);
             Navigation.NavigateNewRequest(optimalRefillLayout, appLayout);
+            ResetButtonColors((Button)sender);
+        }
+        
+        private void profilesPageButton_Click(object sender, EventArgs e)
+        {
+            ProfilesController controller = new ProfilesController();
+            controller.Load(profilesDisplay);
+            Navigation.NavigateNewRequest(profilesLayout, appLayout);
             ResetButtonColors((Button)sender);
         }
         
@@ -78,6 +86,17 @@ namespace Bulofnaia.Forms
             AvailableResourcesController controller = new AvailableResourcesController(this);
             controller.EditResourceNumber();
             controller.InitializeComponents();
+        }
+
+        private void createProfileButton_Click(object sender, EventArgs e)
+        {
+            ProfilesController controller = new ProfilesController();
+
+            String name = profileNameTextbox.Text;
+            String surname = profileSurnameTextbox.Text;
+            String position = profilePositionTextbox.Text;
+            
+            controller.CreateProfile(name, surname, position);
         }
     }
 }

@@ -48,7 +48,7 @@ namespace Bulofnaia.Forms.Controllers
         public void InitializeComponents()
         {
             _parent.availableResourceLayout.SuspendLayout();
-            ClearTable(_parent.selectResourcePlace);
+            ClearTable(_parent.selectResourcePlace, false);
             
             ArrayList resources = ResourceService.SelectResourcesWithUnitNames();
 
@@ -62,16 +62,16 @@ namespace Bulofnaia.Forms.Controllers
             
             _parent.selectResourcePlace.Controls.Add(new ResourceSelect(data));
             
-            ClearTable(_parent.addStoragePricePlace);
+            ClearTable(_parent.addStoragePricePlace, false);
             _parent.addStoragePricePlace.Controls.Add(new TableNumberTextBox("Цена за хранение"));
             
-            ClearTable(_parent.addExpensesPlace);
+            ClearTable(_parent.addExpensesPlace, false);
             _parent.addExpensesPlace.Controls.Add(new TableNumberTextBox("Затраты"));
             
-            ClearTable(_parent.editStoragePricePlace);
+            ClearTable(_parent.editStoragePricePlace, false);
             _parent.editStoragePricePlace.Controls.Add(new TableNumberTextBox("Цена за хранение"));
             
-            ClearTable(_parent.editExpensesPlace);
+            ClearTable(_parent.editExpensesPlace, false);
             _parent.editExpensesPlace.Controls.Add(new TableNumberTextBox("Затраты"));
             
             ArrayList units = UnitRepository.GetAllUnits();
@@ -84,7 +84,7 @@ namespace Bulofnaia.Forms.Controllers
                 unitsData[i++] = new ComboBoxItem(unit.Name, unit.Id);
             }
             
-            ClearTable(_parent.selectUnitPlace);
+            ClearTable(_parent.selectUnitPlace, false);
             _parent.selectUnitPlace.Controls.Add(new ResourceSelect(unitsData));
             
             Load(_parent.resourcesTable);

@@ -10,12 +10,13 @@ namespace Bulofnaia.Forms.Controllers
     {
         public void Load(TableLayoutPanel layout)
         {
-            Hashtable unmetResources = ResourceService.SelectAllUnmetResourceRequirements();
+            // read from db
+            Hashtable optimalRefillData = ResourceService.SelectAllUnmetResourceRequirements();
 
             layout.SuspendLayout();
             ClearTable(layout);
             
-            foreach (Resource data in unmetResources.Values)
+            foreach (Resource data in optimalRefillData.Values)
             {
                 int lastRowNumber = layout.RowCount;
 

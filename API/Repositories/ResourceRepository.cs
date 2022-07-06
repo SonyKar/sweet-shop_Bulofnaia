@@ -15,12 +15,12 @@ namespace Bulofnaia.API.Repositories
             }
 
             
-            DatabaseInitializer.RunQuery($"INSERT INTO resource (name, quantity, unit) VALUES ('{resource.Name}', '{resource.Quantity}', '{resource.Unit}')");
+            DatabaseInitializer.RunQuery($"INSERT INTO resource (name, unit, storage_cost, batch_cost) VALUES ('{resource.Name}', '{resource.Unit}', {resource.StorageCost}, {resource.BatchCost})");
         }
         
         public static ArrayList SelectAllResources()
         {
-            string query = "SELECT res.id, res.name, res.quantity, res.unit FROM resource AS res";
+            string query = "SELECT res.id, res.name, res.unit, res.batch_cost, res.storage_cost FROM resource AS res";
             MySqlConnection connection = DatabaseInitializer.OpenConnection();
             var cmd = new MySqlCommand(query, connection);
 
@@ -34,7 +34,8 @@ namespace Bulofnaia.API.Repositories
                     Id = (int)reader["id"],
                     Name = (string)reader["name"],
                     Unit = (int)reader["unit"],
-                    Quantity = (float)reader["quantity"]
+                    BatchCost = (float)reader["batch_cost"],
+                    StorageCost = (float)reader["storage_cost"],
                 };
                 results.Add(result);
             }
@@ -55,20 +56,26 @@ namespace Bulofnaia.API.Repositories
             return result;
         }
 
-        public static void UpdateQuantityById(int id, float quantity)
+        public static void DeleteResourceById(int id)
         {
-            DatabaseInitializer.RunQuery($"UPDATE resource AS res SET quantity = {quantity} WHERE res.id = {id}");
-        }
+            string query = $"DELETE FROM resource WHERE id = {id}";
+            DatabaseInitializer.RunQuery(query);
+        } 
 
-        public static void UpdateAddQuantityById(int id, float addedQuantity)
-        {
-            DatabaseInitializer.RunQuery($"UPDATE resource AS res SET res.quantity = res.quantity + {addedQuantity} WHERE res.id = {id}");
-        }
-        
-        public static void UpdateSubstractQuantityById(int id, float substractedQuantity)
-        {
-            DatabaseInitializer.RunQuery($"UPDATE resource AS res SET res.quantity = res.quantity - {substractedQuantity} WHERE res.id = {id}");
-        }
+        // public static void UpdateQuantityById(int id, float quantity)
+        // {
+        //     DatabaseInitializer.RunQuery($"UPDATE resource AS res SET quantity = {quantity} WHERE res.id = {id}");
+        // }
+        //
+        // public static void UpdateAddQuantityById(int id, float addedQuantity)
+        // {
+        //     DatabaseInitializer.RunQuery($"UPDATE resource AS res SET res.quantity = res.quantity + {addedQuantity} WHERE res.id = {id}");
+        // }
+        //
+        // public static void UpdateSubstractQuantityById(int id, float substractedQuantity)
+        // {
+        //     DatabaseInitializer.RunQuery($"UPDATE resource AS res SET res.quantity = res.quantity - {substractedQuantity} WHERE res.id = {id}");
+        // }
 
         public static void InsertResourceSafe(Resource resource)
         {

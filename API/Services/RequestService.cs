@@ -41,21 +41,27 @@ namespace Bulofnaia.API.Services
                 Console.Error.WriteLine($"Could not find request with id {id}");
                 return;
             }
-            Hashtable resourceIdToQuantity = RequestResourceRepository.SelectAllResurcesIdToQuantityTableByRequestId(request.Id);
-            foreach (DictionaryEntry entry in resourceIdToQuantity)
-            {
-                int resourceId = (int)entry.Key;
-                float quantity = (float)entry.Value;
-                ResourceRepository.UpdateSubstractQuantityById(resourceId, quantity);
-            }
+
             RemoveRequestById(request.Id);
         }
 
-        public static Hashtable SelectAllRequestsWithResourceAvailabilitySortByDate()
+        public static Hashtable SelectAllRequestsWithResourcesToQuantitySortByDate()
         {
             Hashtable idToResourceTable = ResourceRepository.SelectAllResourcesIdToResourceTable();
             
-            string query = "SELECT request.id AS request_id, request.name AS request_name, request.limit_date, request_resource.quantity, resource.name AS resource_name, unit.name AS unit_name, resource.id AS resource_id FROM ((request_resource LEFT JOIN request ON request.id = request_resource.request_id) INNER JOIN (resource INNER JOIN unit ON unit.id = resource.unit) ON resource.id = request_resource.resource_id) ORDER BY request.limit_date, request.id";
+            string query = "SELECT " +
+                           "request.id AS request_id, request.name AS request_name, request.limit_date, " +
+                           "request_resource.quantity, " +
+                           "resource.name AS resource_name, resource.id AS resource_id, resource.batch_cost AS batch_cost, resource.storage_cost AS storage_cost, " +
+                           "unit.name AS unit_name, unit.id AS unit_id " +
+                           "FROM " +
+                           "(" +
+                           "(request LEFT JOIN request_resource ON request.id = request_resource.request_id) " +
+                           "INNER JOIN " +
+                           "(resource INNER JOIN unit ON unit.id = resource.unit) " +
+                           "ON resource.id = request_resource.resource_id" +
+                           ") " +
+                           "ORDER BY request.limit_date, request.id";
             MySqlCommand command = new MySqlCommand(query, DatabaseInitializer.OpenConnection());
             MySqlDataReader reader = command.ExecuteReader();
 
@@ -64,12 +70,30 @@ namespace Bulofnaia.API.Services
             while (reader.Read())
             {
                 int requestId = (int)reader["request_id"];
-                int resourceId = (int)reader["resource_id"];
                 string requestName = (string)reader["request_name"];
                 DateTime limitDate = (DateTime)reader["limit_date"];
-                float quantity = (float)reader["quantity"];
-                string resourceName = (string)reader["resource_name"];
-                string unitName = (string)reader["unit_name"];
+
+                int resourceId = 0, unitId = 0;
+                float quantity = 0, batchCost = 0, storageCost = 0;
+                string resourceName = "", unitName = "";
+
+                bool resourceExists = true;
+
+                try
+                {
+                    resourceId = (int)reader["resource_id"];
+                    quantity = (float)reader["quantity"];
+                    batchCost = (float)reader["batch_cost"];
+                    storageCost = (float)reader["storage_cost"];
+                    resourceName = (string)reader["resource_name"];
+                    unitName = (string)reader["unit_name"];
+                    unitId = (int)reader["unit_id"];
+                }
+                catch (Exception e)
+                {
+                    Console.Error.WriteLine(e.Message);
+                    resourceExists = false;
+                }
 
                 Request request;
                 if (idToRequestMap[requestId] == null)
@@ -80,27 +104,32 @@ namespace Bulofnaia.API.Services
                     request.Name = requestName;
                     request.LimitDate = limitDate;
                 }
+                
+                if (!resourceExists)
+                    continue;
 
                 request = (Request)idToRequestMap[requestId];
-                request.Resources.Add(new Resource
+
+                Resource resource = new Resource
                 {
+                    Id = resourceId,
                     Name = resourceName,
-                    Quantity = quantity,
-                    UnitName = unitName
-                });
+                    UnitName = unitName,
+                    BatchCost = batchCost,
+                    StorageCost = storageCost,
+                    Unit = unitId,
+                };
 
-                ((Resource)idToResourceTable[resourceId]).Quantity -= quantity;
-                if (((Resource)idToResourceTable[resourceId]).Quantity < 0)
-                {
-                    request.UnmetRequirements.Add(new Resource
-                    {
-                        Id = resourceId,
-                        Name = resourceName,
-                        UnitName = unitName,
-                        Quantity = -((Resource)idToResourceTable[resourceId]).Quantity
-                    });
-                }
-
+                int daysDifference = (limitDate - DateTime.Now).Days;
+                int optimalBatchSize = (int)Math.Ceiling(
+                    Math.Sqrt(2 * batchCost * quantity / ((daysDifference - 3) * storageCost))
+                );
+                int optimalBatchInterval = (int)Math.Floor(optimalBatchSize * (daysDifference - 3) / quantity);
+                
+                request.ResourceToQuantity[resource] = quantity;
+                request.ResourceToOptimalBatchSize[resource] = optimalBatchSize;
+                request.ResourceToOptimalBatchInterval[resource] = optimalBatchInterval;
+                
             }
             
             DatabaseInitializer.CloseConnection();

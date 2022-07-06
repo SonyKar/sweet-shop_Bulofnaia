@@ -1,10 +1,15 @@
-﻿namespace Bulofnaia.API.Entities
+﻿using System;
+
+namespace Bulofnaia.API.Entities
 {
     public class Resource
     {
         private int _id;
         private string _name;
-        private float _quantity;
+
+        private float _batchCost;
+        private float _storageCost;
+
         private int _unit;
         private string _unitName;
 
@@ -14,14 +19,12 @@
         public Resource(string name, float quantity, int unit)
         {
             _name = name;
-            _quantity = quantity;
             _unit = unit;
         }
         public Resource(int id, string name, float quantity, int unit)
         {
             _id = id;
             _name = name;
-            _quantity = quantity;
             _unit = unit;
         }
 
@@ -36,11 +39,17 @@
             get => _name;
             set => _name = value;
         }
-
-        public float Quantity
+        
+        public float BatchCost
         {
-            get => _quantity;
-            set => _quantity = value;
+            get => _batchCost;
+            set => _batchCost = value;
+        }
+
+        public float StorageCost
+        {
+            get => _storageCost;
+            set => _storageCost = value;
         }
 
         public int Unit
@@ -57,7 +66,7 @@
 
         public override string ToString()
         {
-            string result = "Resource: {id = " + _id + ", name = " + _name + ", quantity = " + _quantity + ", unit = " +
+            string result = "Resource: {id = " + _id + ", name = " + _name + ", unit = " +
                             _unit + "}";
             return result;
         }

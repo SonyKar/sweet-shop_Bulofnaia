@@ -13,8 +13,8 @@ namespace Bulofnaia.API
     {
         private static string serverName = "localhost";
         private static string databaseName = "bulofnaia";
-        private static string connectionName = "root";
-        private static string connectionPassword = "";
+        private static string connectionName = "bulofca";
+        private static string connectionPassword = "spovidlom";
 
         private static MySqlConnection _connection = null;
         
@@ -22,64 +22,6 @@ namespace Bulofnaia.API
         {
             _connection = OpenConnection();
             CreateNecessaryTables();
-
-            PopulateUnits();
-            foreach (Unit request in UnitRepository.GetAllUnits())
-            {
-                Console.WriteLine(request);
-            }
-
-            PopulateResources();
-            // PopulateRequestResources();
-            
-            PopulateRequests();
-            /*RequestService.SelectAllRequestsWithResourceAvailabilitySortByDate();
-            for (int i = 0; i < 50; i++)
-            {
-                RequestService.MarkRequestAsAccomplishedById(i);
-            }*/
-        }
-
-        private static void PopulateRequestResources()
-        {
-            RequestResourceRepository.InsertResourceRequestSafe(1,1,200);
-            RequestResourceRepository.InsertResourceRequestSafe(2,1,200);
-            RequestResourceRepository.InsertResourceRequestSafe(3,1,200);
-            RequestResourceRepository.InsertResourceRequestSafe(3,2,200);
-            RequestResourceRepository.InsertResourceRequestSafe(3,3,200);
-            RequestResourceRepository.InsertResourceRequestSafe(4,1,200);
-            RequestResourceRepository.InsertResourceRequestSafe(5,1,200);
-            RequestResourceRepository.InsertResourceRequestSafe(11,1,200);
-        }
-
-        private static void PopulateRequests()
-        {
-            // for (int i = 0; i <= 10; i++)
-            // {
-            //     RequestRepository.AddRequest(new Request(i.ToString(), DateTime.Now));
-            // }
-
-            Request req1 = new Request("Bulofca prikolnaia", DateTime.Now);
-            req1.ResourceToQuantity.Add(2, 1000.00f);
-            req1.ResourceToQuantity.Add(1, 5.0f);
-            req1.ResourceToQuantity.Add(3, 3.0f);
-            RequestService.AddRequest(req1);
-            RequestService.RemoveRequestById(1);
-        }
-
-        private static void PopulateUnits()
-        {
-            UnitRepository.AddUnitSafe(new Unit("gram"));
-            UnitRepository.AddUnitSafe(new Unit("liter"));
-            UnitRepository.AddUnitSafe(new Unit("bottle"));
-        }
-
-        private static void PopulateResources()
-        {
-            ResourceRepository.InsertResourceSafe(new Resource("Sugar",200,UnitRepository.GetByName("gram").Id));
-            ResourceRepository.InsertResourceSafe(new Resource("Tea",500,UnitRepository.GetByName("gram").Id));
-            ResourceRepository.InsertResourceSafe(new Resource("Vodka",2,UnitRepository.GetByName("liter").Id));
-            ResourceRepository.InsertResourceSafe(new Resource("Bulka",2,UnitRepository.GetByName("gram").Id));
         }
 
         public static MySqlConnection OpenConnection()
@@ -131,6 +73,9 @@ namespace Bulofnaia.API
             RunQuery(query);
 
             query = GetRequestResourceQuery();
+            RunQuery(query);
+
+            query = GetUserQuery();
             RunQuery(query);
         }
 
@@ -197,13 +142,28 @@ namespace Bulofnaia.API
                            "(" +
                            "id INT(8) PRIMARY KEY AUTO_INCREMENT," +
                            "name VARCHAR(255) NOT NULL," +
-                           "quantity FLOAT(8) NOT NULL," +
+                           "batch_cost FLOAT(8) NOT NULL," +
+                           "storage_cost FLOAT(8) NOT NULL," +
                            "unit INT(8) NOT NULL," +
                            "CONSTRAINT unique_names UNIQUE(name)," +
                            "CONSTRAINT foreign_key FOREIGN KEY (unit) REFERENCES unit(id)" +
                            ")";
 
             return query;
+        }
+
+        private static string GetUserQuery()
+        {
+            string query = "CREATE TABLE IF NOT EXISTS User" +
+                           "(" +
+                           "id INT(8) PRIMARY KEY AUTO_INCREMENT," +
+                           "first_name VARCHAR(255) NOT NULL," +
+                           "last_name VARCHAR(255) NOT NULL," +
+                           "position VARCHAR(255) NOT NULL" +
+                           ")";
+            
+            return query;
+
         }
         
     }

@@ -8,15 +8,14 @@ namespace Bulofnaia.API.Entities
         private int _id;
         private string _name;
         private DateTime _limitDate;
-        private Hashtable _resourcesToQuantity;
-        private ArrayList _resourcesUnmet;
-        private ArrayList _resources;
+
+        private Hashtable _resourceToQuantity;
+        private Hashtable _resourceToOptimalBatchSize;
+        private Hashtable _resourceToOptimalBatchInterval;
 
         public Request()
         {
-            _resourcesUnmet = new ArrayList();
-            _resourcesToQuantity = new Hashtable();
-            _resources = new ArrayList();
+            _resourceToQuantity = new Hashtable();
         }
         public Request(string name, DateTime limitDate) : this()
         {
@@ -49,26 +48,26 @@ namespace Bulofnaia.API.Entities
 
         public Hashtable ResourceToQuantity
         {
-            get => _resourcesToQuantity;
-            set => _resourcesToQuantity = value;
+            get => _resourceToQuantity;
+            set => _resourceToQuantity = value;
         }
 
-        public ArrayList UnmetRequirements
+        public Hashtable ResourceToOptimalBatchSize
         {
-            get => _resourcesUnmet;
-            set => _resourcesUnmet = value;
+            get => _resourceToOptimalBatchSize;
+            set => _resourceToOptimalBatchSize = value;
         }
 
-        public ArrayList Resources
+        public Hashtable ResourceToOptimalBatchInterval
         {
-            get => _resources;
-            set => _resources = value;
+            get => _resourceToOptimalBatchInterval;
+            set => _resourceToOptimalBatchInterval = value;
         }
 
         public override string ToString()
         {
             string result = "Request: {id = " + _id + " name = " + _name + " limitDate = " + _limitDate + " resourcesUnmet = [" ;
-            foreach (DictionaryEntry entry in _resourcesUnmet)
+            foreach (DictionaryEntry entry in _resourceToQuantity)
             {
                 result += $"({entry.Key},{entry.Value})";
             }

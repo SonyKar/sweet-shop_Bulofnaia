@@ -60,7 +60,12 @@ namespace Bulofnaia.API.Repositories
         {
             string query = $"DELETE FROM resource WHERE id = {id}";
             DatabaseInitializer.RunQuery(query);
-        } 
+        }
+
+        public static void UpdateResourceBatchCostAndStorageCostById(int id, float batchCost, float storageCost)
+        {
+            DatabaseInitializer.RunQuery($"UPDATE resource SET batch_cost = '{batchCost}', storage_cost = '{storageCost}' WHERE id = {id}");
+        }
 
         // public static void UpdateQuantityById(int id, float quantity)
         // {

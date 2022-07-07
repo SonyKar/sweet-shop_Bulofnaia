@@ -6,17 +6,17 @@ namespace Bulofnaia.API.Repositories
 {
     public class UserRepository
     {
-        static void AddUser(User user)
+        public static void InsertUser(User user)
         {
             DatabaseInitializer.RunQuery($"INSERT INTO user (first_name, last_name, position) VALUES ('{user.FirstName}','{user.LastName}','{user.Position}')");
         }
 
-        static void DeleteUserById(int id)
+        public static void DeleteUserById(int id)
         {
             DatabaseInitializer.RunQuery($"DELETE FROM user WHERE user.id = {id}");
         }
 
-        static ArrayList SelectUsers()
+        public static ArrayList SelectUsers()
         {
             string query = $"SELECT * FROM user";
             MySqlCommand command = new MySqlCommand(query, DatabaseInitializer.OpenConnection());

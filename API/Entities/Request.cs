@@ -16,6 +16,8 @@ namespace Bulofnaia.API.Entities
         public Request()
         {
             _resourceToQuantity = new Hashtable();
+            _resourceToOptimalBatchSize = new Hashtable();
+            _resourceToOptimalBatchInterval = new Hashtable();
         }
         public Request(string name, DateTime limitDate) : this()
         {

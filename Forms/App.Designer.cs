@@ -377,6 +377,8 @@ namespace Bulofnaia.Forms
             this.profilesLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.profilesLayout.Size = new System.Drawing.Size(940, 667);
             this.profilesLayout.TabIndex = 5;
+            this.createProfileLayout.AutoSize = true;
+            this.createProfileLayout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             // 
             // createProfileLayout
             // 
@@ -390,18 +392,15 @@ namespace Bulofnaia.Forms
             this.createProfileLayout.Controls.Add(this.profileNameLabel, 0, 0);
             this.createProfileLayout.Controls.Add(this.profileNameTextbox, 1, 0);
             this.createProfileLayout.Controls.Add(this.createProfileButton, 0, 3);
-            this.createProfileLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.createProfileLayout.Dock = System.Windows.Forms.DockStyle.Top;
             this.createProfileLayout.Location = new System.Drawing.Point(480, 3);
             this.createProfileLayout.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.createProfileLayout.Name = "createProfileLayout";
             this.createProfileLayout.RowCount = 5;
-            this.createProfileLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.05882F));
-            this.createProfileLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.94118F));
-            this.createProfileLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41F));
-            this.createProfileLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
-            this.createProfileLayout.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 438F));
             this.createProfileLayout.Size = new System.Drawing.Size(450, 661);
             this.createProfileLayout.TabIndex = 0;
+            this.createProfileLayout.AutoSize = true;
+            this.createProfileLayout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             // 
             // profilePositionTextbox
             // 

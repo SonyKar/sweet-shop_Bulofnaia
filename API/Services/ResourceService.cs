@@ -10,7 +10,7 @@ namespace Bulofnaia.API.Services
     {
         public static ArrayList SelectResourcesWithUnitNames()
         {
-            string query = "SELECT resource.id AS id, resource.name AS name, unit.name AS unit_name FROM (resource INNER JOIN unit ON resource.unit = unit.id)";
+            string query = "SELECT resource.id AS id, resource.name AS name, resource.batch_cost AS batch_cost, resource.storage_cost AS storage_cost, unit.name AS unit_name FROM (resource INNER JOIN unit ON resource.unit = unit.id)";
 
             ArrayList result = new ArrayList();
             MySqlCommand command = new MySqlCommand(query, DatabaseInitializer.OpenConnection());
@@ -21,7 +21,9 @@ namespace Bulofnaia.API.Services
                 {
                     Id = (int)reader["id"],
                     Name = (string)reader["name"],
-                    UnitName = (string)reader["unit_name"]
+                    UnitName = (string)reader["unit_name"],
+                    BatchCost = (float)reader["batch_cost"],
+                    StorageCost = (float)reader["storage_cost"],
                 });
             }
 

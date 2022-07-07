@@ -47,8 +47,6 @@ namespace Bulofnaia.API.Services
 
         public static Hashtable SelectAllRequestsWithResourcesToQuantitySortByDate()
         {
-            Hashtable idToResourceTable = ResourceRepository.SelectAllResourcesIdToResourceTable();
-            
             string query = "SELECT " +
                            "request.id AS request_id, request.name AS request_name, request.limit_date, " +
                            "request_resource.quantity, " +

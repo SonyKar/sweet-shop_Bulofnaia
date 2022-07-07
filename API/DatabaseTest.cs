@@ -14,16 +14,16 @@ namespace Bulofnaia.API
                 Console.WriteLine(request);
             }
 
-            // PopulateUnits();
+            PopulateUnits();
             // PopulateResources();
-            PopulateRequests();
-            PopulateRequestResources();
+            // PopulateRequests();
+            // PopulateRequestResources();
             
-            ResourceService.DeleteResourceById(0);
-            ResourceService.DeleteResourceById(1);
-            ResourceService.DeleteResourceById(2);
-            ResourceService.DeleteResourceById(3);
-            ResourceService.DeleteResourceById(4);
+            // ResourceService.DeleteResourceById(0);
+            // ResourceService.DeleteResourceById(1);
+            // ResourceService.DeleteResourceById(2);
+            // ResourceService.DeleteResourceById(3);
+            // ResourceService.DeleteResourceById(4);
             /*RequestService.SelectAllRequestsWithResourceAvailabilitySortByDate();
             for (int i = 0; i < 50; i++)
             {

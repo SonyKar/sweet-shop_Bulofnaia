@@ -4,6 +4,17 @@
     {
         private int _id;
         private string _firstName, _lastName, _position;
+        
+        public User()
+        {
+        }
+
+        public User(string firstName, string lastName, string position)
+        {
+            _firstName = firstName;
+            _lastName = lastName;
+            _position = position;
+        }
 
         public int Id
         {

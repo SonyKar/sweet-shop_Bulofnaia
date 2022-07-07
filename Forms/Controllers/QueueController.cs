@@ -12,27 +12,30 @@ namespace Bulofnaia.Forms.Controllers
     {
         public void Load(TableLayoutPanel queueTable)
         {
-            Hashtable requests = RequestService.SelectAllRequestsWithResourceAvailabilitySortByDate();
+            Hashtable requests = RequestService.SelectAllRequestsWithResourcesToQuantitySortByDate();
             queueTable.SuspendLayout();
             ClearTable(queueTable);
             
-            foreach (Request data in requests.Values)
+            foreach (Request request in requests.Values)
             {
                 int lastRowNumber = queueTable.RowCount;
                 QueueResources queueResources = new QueueResources();
-                foreach (Resource resource in data.Resources)
+                
+                foreach (DictionaryEntry resourceToQuantity in request.ResourceToQuantity)
                 {
-                    queueResources.Controls.Add(new TableInput(resource.Name + " " + resource.Quantity + resource.UnitName));
+                    Resource resource = (Resource)resourceToQuantity.Key;
+                    float quantity = (float)resourceToQuantity.Value;
+                    queueResources.Controls.Add(new TableInput(resource.Name + " " + quantity + resource.UnitName));
                 }
-
+            
                 // bool isPossible = data.UnmetRequirements.Count == 0;
                 RemoveRowButton button = new RemoveRowButton(this);
                 // if (!isPossible) button.Enabled = false;
                 
-                queueTable.Controls.Add(new TableInput(data.Id.ToString()), 0, lastRowNumber);
-                queueTable.Controls.Add(new TableInput(data.Name), 1, lastRowNumber);
+                queueTable.Controls.Add(new TableInput(request.Id.ToString()), 0, lastRowNumber);
+                queueTable.Controls.Add(new TableInput(request.Name), 1, lastRowNumber);
                 queueTable.Controls.Add(queueResources, 2, lastRowNumber);
-                queueTable.Controls.Add(new TableInput(data.LimitDate.ToShortDateString()), 3, lastRowNumber);
+                queueTable.Controls.Add(new TableInput(request.LimitDate.ToShortDateString()), 3, lastRowNumber);
                 queueTable.Controls.Add(button, 4, lastRowNumber);
                 queueTable.RowCount++;
                 

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Windows.Forms;
 using Bulofnaia.API.Entities;
+using Bulofnaia.API.Repositories;
 using Bulofnaia.API.Services;
 using Bulofnaia.Forms.Components.Table;
 
@@ -12,6 +13,8 @@ namespace Bulofnaia.Forms.Controllers
         public void Load(TableLayoutPanel layout)
         {
             // read from db
+            ArrayList users = UserRepository.SelectUsers();
+
             String[][] dummyData =
             {
                 new [] {"1", "Иван Иванов", "заведующий складом"},
@@ -23,11 +26,11 @@ namespace Bulofnaia.Forms.Controllers
             layout.SuspendLayout();
             ClearTable(layout, false);
             
-            foreach (String[] data in dummyData)
+            foreach (User user in users)
             {
                 int lastRowNumber = layout.RowCount;
 
-                layout.Controls.Add(new ProfileData(data[0], data[1], data[2]), 0, lastRowNumber); // profile
+                layout.Controls.Add(new ProfileData(user.Id + "", user.FirstName + " " + user.LastName, user.Position), 0, lastRowNumber); // profile
                 layout.RowCount++;
             }
             layout.ResumeLayout();
@@ -36,6 +39,7 @@ namespace Bulofnaia.Forms.Controllers
         public void CreateProfile(String name, String surname, String position)
         {
             // add to DB
+            UserRepository.InsertUser(new User(name, surname, position));
         }
     }
 }

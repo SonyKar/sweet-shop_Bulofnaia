@@ -47,7 +47,7 @@ namespace Bulofnaia.API.Repositories
 
         public static ArrayList GetAllUnits()
         {
-            string query = "SELECT un.id, un.name FROM unit AS un";
+            string query = "SELECT un.id, un.name FROM unit AS un ORDER BY id";
             MySqlConnection connection = DatabaseInitializer.OpenConnection();
             var cmd = new MySqlCommand(query, connection);
 

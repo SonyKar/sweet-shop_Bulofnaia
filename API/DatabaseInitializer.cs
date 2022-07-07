@@ -22,6 +22,26 @@ namespace Bulofnaia.API
         {
             _connection = OpenConnection();
             CreateNecessaryTables();
+
+            PopulateNecessaryTables();
+            // DatabaseTest.Test();
+        }
+
+        private static void PopulateNecessaryTables()
+        {
+            UnitRepository.AddUnitSafe(new Unit("шт."));
+            UnitRepository.AddUnitSafe(new Unit("г."));
+            UnitRepository.AddUnitSafe(new Unit("кг."));
+            UnitRepository.AddUnitSafe(new Unit("т."));
+            UnitRepository.AddUnitSafe(new Unit("мл."));
+            UnitRepository.AddUnitSafe(new Unit("л."));
+            UnitRepository.AddUnitSafe(new Unit("кв.м"));
+            UnitRepository.AddUnitSafe(new Unit("куб.м"));
+
+            UserRepository.InsertUser(new User("Иван", "Иванов", "заведующий складом"));
+            UserRepository.InsertUser(new User("Александр", "Маслов", "кладовщик"));
+            UserRepository.InsertUser(new User("Пётр", "Васильев", "грузчик"));
+            UserRepository.InsertUser(new User("Владислав", "Цепеш", "фасовщик-упаковщик"));
         }
 
         public static MySqlConnection OpenConnection()

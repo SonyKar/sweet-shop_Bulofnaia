@@ -62,40 +62,37 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="API\DatabaseInitializer.cs" />
+    <Compile Include="API\DatabaseTest.cs" />
     <Compile Include="API\Entities\Request.cs" />
     <Compile Include="API\Entities\Resource.cs" />
     <Compile Include="API\Entities\Unit.cs" />
+    <Compile Include="API\Entities\User.cs" />
     <Compile Include="API\Repositories\RequestRepository.cs" />
     <Compile Include="API\Repositories\RequestResourceRepository.cs" />
     <Compile Include="API\Repositories\ResourceRepository.cs" />
     <Compile Include="API\Repositories\UnitRepository.cs" />
+    <Compile Include="API\Repositories\UserRepository.cs" />
     <Compile Include="API\Services\RequestService.cs" />
     <Compile Include="API\Services\ResourceService.cs" />
-    <Compile Include="Forms\App.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\App.Designer.cs">
-      <DependentUpon>App.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Forms\App.cs" />
+    <Compile Include="Forms\App.Designer.cs" />
     <Compile Include="Forms\Components\Table\ProfileData.cs" />
+    <Compile Include="Forms\Components\Table\QueueResources.cs" />
+    <Compile Include="Forms\Components\Table\RemoveRowButton.cs" />
     <Compile Include="Forms\Components\Table\ResourceSelect.cs" />
     <Compile Include="Forms\Components\Table\TableInput.cs" />
-    <Compile Include="Forms\Components\Table\RemoveRowButton.cs" />
-    <Compile Include="Forms\Components\Table\QueueResources.cs" />
     <Compile Include="Forms\Components\Table\TableNumberTextBox.cs" />
     <Compile Include="Forms\Controllers\AvailableResourcesController.cs" />
     <Compile Include="Forms\Controllers\CreateRequestController.cs" />
-    <Compile Include="Forms\Controllers\ProfilesController.cs" />
-    <Compile Include="Forms\Controllers\TableController.cs" />
     <Compile Include="Forms\Controllers\Navigation.cs" />
-    <Compile Include="Forms\Controllers\QueueController.cs" />
     <Compile Include="Forms\Controllers\OptimalRefillController.cs" />
+    <Compile Include="Forms\Controllers\ProfilesController.cs" />
+    <Compile Include="Forms\Controllers\QueueController.cs" />
+    <Compile Include="Forms\Controllers\TableController.cs" />
     <Compile Include="Forms\Entity\ComboBoxItem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\App.resx">
-      <DependentUpon>App.cs</DependentUpon>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\App.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

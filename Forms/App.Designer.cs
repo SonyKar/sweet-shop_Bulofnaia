@@ -32,6 +32,7 @@ namespace Bulofnaia.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.authLayout = new System.Windows.Forms.FlowLayoutPanel();
             this.appLayout = new System.Windows.Forms.TableLayoutPanel();
             this.menuLayout = new System.Windows.Forms.TableLayoutPanel();
             this.profilesPageButton = new System.Windows.Forms.Button();
@@ -51,6 +52,8 @@ namespace Bulofnaia.Forms
             this.createProfileLayout = new System.Windows.Forms.TableLayoutPanel();
             this.profilePositionTextbox = new System.Windows.Forms.TextBox();
             this.profileSurnameTextbox = new System.Windows.Forms.TextBox();
+            this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
             this.profileSurnameLabel = new System.Windows.Forms.Label();
             this.profilePositionLabel = new System.Windows.Forms.Label();
             this.profileNameLabel = new System.Windows.Forms.Label();
@@ -65,6 +68,11 @@ namespace Bulofnaia.Forms
             this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.authLabel = new System.Windows.Forms.Label();
+            this.usernameLabel = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.authErrorLabel = new System.Windows.Forms.Label();
+            this.authButton = new System.Windows.Forms.Button();
             this.availableResourceLayout = new System.Windows.Forms.TableLayoutPanel();
             this.addStoragePricePlace = new System.Windows.Forms.TableLayoutPanel();
             this.addExpensesPlace = new System.Windows.Forms.TableLayoutPanel();
@@ -109,10 +117,29 @@ namespace Bulofnaia.Forms
             this.queueLayout.SuspendLayout();
             this.queueTable.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // appLayout
-            // 
-            this.appLayout.AutoSize = true;
+
+            //
+            // authLayout
+            //
+            this.authLayout.AutoSize = true;
+            this.authLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.authLayout.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.authLayout.FlowDirection = FlowDirection.TopDown;
+            this.authLayout.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.authLayout.Padding = new Padding(450, 200, 0, 0);
+            this.authLayout.Name = "authLayout";
+            this.authLayout.Controls.Add(this.authLabel);
+            this.authLayout.Controls.Add(this.usernameLabel);
+            this.authLayout.Controls.Add(this.usernameTextBox);
+            this.authLayout.Controls.Add(this.passwordLabel);
+            this.authLayout.Controls.Add(this.passwordTextBox);
+            this.authLayout.Controls.Add(this.authErrorLabel);
+            this.authLayout.Controls.Add(this.authButton);
+
+			// 
+			// appLayout
+			// 
+			this.appLayout.AutoSize = true;
             this.appLayout.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.appLayout.BackColor = System.Drawing.Color.WhiteSmoke;
             this.appLayout.ColumnCount = 2;
@@ -249,9 +276,24 @@ namespace Bulofnaia.Forms
             this.optimalRefillPageButton.UseVisualStyleBackColor = false;
             this.optimalRefillPageButton.Click += new System.EventHandler(this.optimalRefillPageButton_Click);
             // 
-            // createRequestLayout
+            // authButton
             // 
-            this.createRequestLayout.AutoScroll = true;
+            this.authButton.BackColor = System.Drawing.Color.White;
+            this.authButton.FlatAppearance.BorderSize = 0;
+            this.authButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.authButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.authButton.Location = new System.Drawing.Point(8, 380);
+            this.authButton.Margin = new System.Windows.Forms.Padding(3, 3, 3, 25);
+            this.authButton.Name = "authButton";
+            this.authButton.Size = new System.Drawing.Size(100, 30);
+            this.authButton.TabIndex = 3;
+            this.authButton.Text = "Войти";
+            this.authButton.UseVisualStyleBackColor = false;
+            this.authButton.Click += new System.EventHandler(this.authButton_Click);
+			// 
+			// createRequestLayout
+			// 
+			this.createRequestLayout.AutoScroll = true;
             this.createRequestLayout.ColumnCount = 2;
             this.createRequestLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.createRequestLayout.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -401,10 +443,29 @@ namespace Bulofnaia.Forms
             this.createProfileLayout.TabIndex = 0;
             this.createProfileLayout.AutoSize = true;
             this.createProfileLayout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+			// 
+			// usernameTextBox
+// 
+			this.usernameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usernameTextBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTextBox.Location = new System.Drawing.Point(120, 88);
+            this.usernameTextBox.Name = "usernameTextBox";
+            this.usernameTextBox.Size = new System.Drawing.Size(327, 32);
+            this.usernameTextBox.TabIndex = 1;
             // 
-            // profilePositionTextbox
+            // passwordTextBox
             // 
-            this.profilePositionTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.passwordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.passwordTextBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTextBox.Location = new System.Drawing.Point(120, 88);
+            this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.Size = new System.Drawing.Size(327, 32);
+            this.passwordTextBox.PasswordChar = '*';
+            this.passwordTextBox.TabIndex = 2;
+			// 
+			// profilePositionTextbox
+			// 
+			this.profilePositionTextbox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.profilePositionTextbox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.profilePositionTextbox.Location = new System.Drawing.Point(120, 88);
             this.profilePositionTextbox.Name = "profilePositionTextbox";
@@ -553,9 +614,59 @@ namespace Bulofnaia.Forms
             this.optimalRefillDisplay.Size = new System.Drawing.Size(934, 80);
             this.optimalRefillDisplay.TabIndex = 2;
             // 
-            // label7
+            // authLabel
             // 
-            this.label7.AutoSize = true;
+            this.authLabel.AutoSize = true;
+            this.authLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right)));
+			this.authLabel.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.authLabel.Location = new System.Drawing.Point(802, 4);
+            this.authLabel.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.authLabel.Name = "authLabel";
+            this.authLabel.Size = new System.Drawing.Size(128, 72);
+            this.authLabel.Text = "Авторизация";
+            this.authLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // usernameLabel
+            // 
+            this.usernameLabel.AutoSize = true;
+            this.usernameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.usernameLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLabel.Location = new System.Drawing.Point(802, 4);
+            this.usernameLabel.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.usernameLabel.Name = "usernameLabel";
+            this.usernameLabel.Size = new System.Drawing.Size(128, 72);
+            this.usernameLabel.Text = "Логин:";
+            this.usernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // passwordLabel
+            // 
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.passwordLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel.Location = new System.Drawing.Point(802, 4);
+            this.passwordLabel.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.passwordLabel.Name = "passwordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(128, 72);
+            this.passwordLabel.Text = "Пароль:";
+            this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// authErrorLabel
+			// 
+			this.authErrorLabel.AutoSize = true;
+            this.authErrorLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.authErrorLabel.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.authErrorLabel.ForeColor = Color.Crimson;
+            this.authErrorLabel.Location = new System.Drawing.Point(802, 4);
+            this.authErrorLabel.Margin = new System.Windows.Forms.Padding(3);
+            this.authErrorLabel.Name = "authErrorLabel";
+            this.authErrorLabel.Size = new System.Drawing.Size(128, 72);
+            this.authErrorLabel.Text = "Неправильный логин или пароль";
+            this.authErrorLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.authErrorLabel.Visible = false;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
             this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label7.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(802, 4);
@@ -1077,7 +1188,7 @@ namespace Bulofnaia.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1182, 673);
-            this.Controls.Add(this.appLayout);
+            this.Controls.Add(this.authLayout);
             this.Location = new System.Drawing.Point(15, 15);
             this.MinimumSize = new System.Drawing.Size(1200, 720);
             this.Name = "App";
@@ -1112,6 +1223,8 @@ namespace Bulofnaia.Forms
 
         private System.Windows.Forms.TextBox profileSurnameTextbox;
         private System.Windows.Forms.TextBox profilePositionTextbox;
+        private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
 
         private System.Windows.Forms.TextBox profileNameTextbox;
 
@@ -1129,6 +1242,8 @@ namespace Bulofnaia.Forms
         private System.Windows.Forms.Label label7;
 
         private System.Windows.Forms.Button profilesPageButton;
+
+        private System.Windows.Forms.Button authButton;
 
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
@@ -1206,6 +1321,10 @@ namespace Bulofnaia.Forms
         private System.Windows.Forms.Label nameLabel;
         private System.Windows.Forms.Label resourcesLable;
         private System.Windows.Forms.Label actionLabel;
+        private System.Windows.Forms.Label authLabel;
+        private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label authErrorLabel;
 
         private System.Windows.Forms.TableLayoutPanel queueTable;
 
@@ -1215,6 +1334,8 @@ namespace Bulofnaia.Forms
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
 
         private System.Windows.Forms.TableLayoutPanel appLayout;
+
+        private System.Windows.Forms.FlowLayoutPanel authLayout;
 
         #endregion
     }

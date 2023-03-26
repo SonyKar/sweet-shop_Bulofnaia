@@ -74,14 +74,28 @@
     <Compile Include="API\Repositories\UserRepository.cs" />
     <Compile Include="API\Services\RequestService.cs" />
     <Compile Include="API\Services\ResourceService.cs" />
-    <Compile Include="Forms\App.cs" />
+    <Compile Include="Forms\App.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\App.Designer.cs" />
-    <Compile Include="Forms\Components\Table\ProfileData.cs" />
-    <Compile Include="Forms\Components\Table\QueueResources.cs" />
-    <Compile Include="Forms\Components\Table\RemoveRowButton.cs" />
-    <Compile Include="Forms\Components\Table\ResourceSelect.cs" />
-    <Compile Include="Forms\Components\Table\TableInput.cs" />
-    <Compile Include="Forms\Components\Table\TableNumberTextBox.cs" />
+    <Compile Include="Forms\Components\Table\ProfileData.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\Table\QueueResources.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\Table\RemoveRowButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\Table\ResourceSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\Table\TableInput.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Forms\Components\Table\TableNumberTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Forms\Controllers\AvailableResourcesController.cs" />
     <Compile Include="Forms\Controllers\CreateRequestController.cs" />
     <Compile Include="Forms\Controllers\Navigation.cs" />
@@ -117,7 +131,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="API\.idea\.idea.API.dir" />
+    <Folder Include="API\.idea\.idea.API.dir\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -23,8 +23,19 @@ namespace Bulofnaia.Forms
             selectedButton.BackColor = Color.FromArgb(255, 255,182,137);
             selectedButton.ForeColor = Color.White;
         }
-        
-        private void newRequestPageButton_Click(object sender, EventArgs e)
+
+        private void authButton_Click(object sender, EventArgs e)
+        {
+	        if (usernameTextBox.Text.Trim() == "" || passwordTextBox.Text.Trim() == "")
+	        {
+		        authErrorLabel.Visible = true;
+		        return;
+	        }
+	        Controls.Remove(authLayout);
+            Controls.Add(appLayout);
+        }
+
+		private void newRequestPageButton_Click(object sender, EventArgs e)
         {
             Navigation.NavigateNewRequest(createRequestLayout, appLayout);
             ResetButtonColors((Button)sender);

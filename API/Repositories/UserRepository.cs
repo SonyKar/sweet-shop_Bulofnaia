@@ -21,9 +21,10 @@ namespace Bulofnaia.API.Repositories
 	        string query = $"SELECT * FROM user WHERE `username` = '{username}' AND `password` = '{password}'";
 	        MySqlCommand command = new MySqlCommand(query, DatabaseInitializer.OpenConnection());
 	        MySqlDataReader reader = command.ExecuteReader();
-	        DatabaseInitializer.CloseConnection();
 
-			return reader.HasRows;
+	        bool isUser = reader.HasRows;
+	        DatabaseInitializer.CloseConnection();
+	        return isUser;
         }
 
         public static ArrayList SelectUsers()
@@ -42,7 +43,7 @@ namespace Bulofnaia.API.Repositories
                     LastName = (string)reader["last_name"],
                     Position = (string)reader["position"],
                     Username = (string)reader["username"],
-                    Password = (string)reader["password"],
+                    Password = (string)reader["password"]
 				});
             }
 

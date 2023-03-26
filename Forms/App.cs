@@ -114,16 +114,17 @@ namespace Bulofnaia.Forms
             String name = profileNameTextbox.Text;
             String surname = profileSurnameTextbox.Text;
             String position = profilePositionTextbox.Text;
-            string username = usernameTextBox.Text;
-            string password = passwordTextBox.Text;
+            string username = usernameTextBox1.Text;
+            string password = passwordTextBox1.Text;
 
             profileNameTextbox.Text = "";
             profileSurnameTextbox.Text = "";
             profilePositionTextbox.Text = "";
-            usernameTextBox.Text = "";
-            passwordTextBox.Text = "";
+            usernameTextBox1.Text = "";
+            passwordTextBox1.Text = "";
 
             controller.CreateProfile(name, surname, position, username, password);
-        }
+            controller.Load(profilesDisplay);
+		}
     }
 }

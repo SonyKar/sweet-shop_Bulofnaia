@@ -36,10 +36,10 @@ namespace Bulofnaia.Forms.Controllers
             layout.ResumeLayout();
         }
 
-        public void CreateProfile(String name, String surname, String position)
+        public void CreateProfile(String name, String surname, String position, string username, string password)
         {
             // add to DB
-            UserRepository.InsertUser(new User(name, surname, position));
+            UserRepository.InsertUser(new User(name, surname, position, username, password));
         }
     }
 }

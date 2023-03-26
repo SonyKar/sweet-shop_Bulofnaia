@@ -53,7 +53,9 @@ namespace Bulofnaia.Forms
             this.profilePositionTextbox = new System.Windows.Forms.TextBox();
             this.profileSurnameTextbox = new System.Windows.Forms.TextBox();
             this.usernameTextBox = new System.Windows.Forms.TextBox();
+            this.usernameTextBox1 = new System.Windows.Forms.TextBox();
             this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox1 = new System.Windows.Forms.TextBox();
             this.profileSurnameLabel = new System.Windows.Forms.Label();
             this.profilePositionLabel = new System.Windows.Forms.Label();
             this.profileNameLabel = new System.Windows.Forms.Label();
@@ -70,7 +72,9 @@ namespace Bulofnaia.Forms
             this.label1 = new System.Windows.Forms.Label();
             this.authLabel = new System.Windows.Forms.Label();
             this.usernameLabel = new System.Windows.Forms.Label();
+            this.usernameLabel1 = new System.Windows.Forms.Label();
             this.passwordLabel = new System.Windows.Forms.Label();
+            this.passwordLabel1 = new System.Windows.Forms.Label();
             this.authErrorLabel = new System.Windows.Forms.Label();
             this.authButton = new System.Windows.Forms.Button();
             this.availableResourceLayout = new System.Windows.Forms.TableLayoutPanel();
@@ -433,19 +437,23 @@ namespace Bulofnaia.Forms
             this.createProfileLayout.Controls.Add(this.profilePositionLabel, 0, 2);
             this.createProfileLayout.Controls.Add(this.profileNameLabel, 0, 0);
             this.createProfileLayout.Controls.Add(this.profileNameTextbox, 1, 0);
-            this.createProfileLayout.Controls.Add(this.createProfileButton, 0, 3);
+            this.createProfileLayout.Controls.Add(this.usernameLabel1, 0, 3);
+            this.createProfileLayout.Controls.Add(this.usernameTextBox1, 1, 3);
+            this.createProfileLayout.Controls.Add(this.passwordLabel1, 0, 4);
+            this.createProfileLayout.Controls.Add(this.passwordTextBox1, 1, 4);
+			this.createProfileLayout.Controls.Add(this.createProfileButton, 0, 5);
             this.createProfileLayout.Dock = System.Windows.Forms.DockStyle.Top;
             this.createProfileLayout.Location = new System.Drawing.Point(480, 3);
             this.createProfileLayout.Margin = new System.Windows.Forms.Padding(10, 3, 10, 3);
             this.createProfileLayout.Name = "createProfileLayout";
-            this.createProfileLayout.RowCount = 5;
+            this.createProfileLayout.RowCount = 7;
             this.createProfileLayout.Size = new System.Drawing.Size(450, 661);
             this.createProfileLayout.TabIndex = 0;
             this.createProfileLayout.AutoSize = true;
             this.createProfileLayout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
 			// 
 			// usernameTextBox
-// 
+			// 
 			this.usernameTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.usernameTextBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.usernameTextBox.Location = new System.Drawing.Point(120, 88);
@@ -453,15 +461,34 @@ namespace Bulofnaia.Forms
             this.usernameTextBox.Size = new System.Drawing.Size(327, 32);
             this.usernameTextBox.TabIndex = 1;
             // 
-            // passwordTextBox
+            // usernameTextBox1
             // 
-            this.passwordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usernameTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.usernameTextBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameTextBox1.Location = new System.Drawing.Point(120, 88);
+            this.usernameTextBox1.Name = "usernameTextBox1";
+            this.usernameTextBox1.Size = new System.Drawing.Size(327, 32);
+            this.usernameTextBox1.TabIndex = 1;
+			// 
+			// passwordTextBox
+			// 
+			this.passwordTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.passwordTextBox.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordTextBox.Location = new System.Drawing.Point(120, 88);
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.Size = new System.Drawing.Size(327, 32);
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.TabIndex = 2;
+            // 
+            // passwordTextBox1
+            // 
+            this.passwordTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.passwordTextBox1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordTextBox1.Location = new System.Drawing.Point(120, 88);
+            this.passwordTextBox1.Name = "passwordTextBox1";
+            this.passwordTextBox1.Size = new System.Drawing.Size(327, 32);
+            this.passwordTextBox1.PasswordChar = '*';
+            this.passwordTextBox1.TabIndex = 2;
 			// 
 			// profilePositionTextbox
 			// 
@@ -638,9 +665,21 @@ namespace Bulofnaia.Forms
             this.usernameLabel.Text = "Логин:";
             this.usernameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // passwordLabel
+            // usernameLabel1
             // 
-            this.passwordLabel.AutoSize = true;
+            this.usernameLabel1.AutoSize = true;
+            this.usernameLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.usernameLabel1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usernameLabel1.Location = new System.Drawing.Point(802, 4);
+            this.usernameLabel1.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.usernameLabel1.Name = "usernameLabel1";
+            this.usernameLabel1.Size = new System.Drawing.Size(128, 72);
+            this.usernameLabel1.Text = "Логин:";
+            this.usernameLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			// 
+			// passwordLabel
+			// 
+			this.passwordLabel.AutoSize = true;
             this.passwordLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | AnchorStyles.Left)));
             this.passwordLabel.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.passwordLabel.Location = new System.Drawing.Point(802, 4);
@@ -649,6 +688,18 @@ namespace Bulofnaia.Forms
             this.passwordLabel.Size = new System.Drawing.Size(128, 72);
             this.passwordLabel.Text = "Пароль:";
             this.passwordLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // passwordLabel1
+            // 
+            this.passwordLabel1.AutoSize = true;
+            this.passwordLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom | AnchorStyles.Left)));
+            this.passwordLabel1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.passwordLabel1.Location = new System.Drawing.Point(802, 4);
+            this.passwordLabel1.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
+            this.passwordLabel1.Name = "passwordLabel1";
+            this.passwordLabel1.Size = new System.Drawing.Size(128, 72);
+            this.passwordLabel1.Text = "Пароль:";
+            this.passwordLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// authErrorLabel
 			// 
@@ -1224,7 +1275,9 @@ namespace Bulofnaia.Forms
         private System.Windows.Forms.TextBox profileSurnameTextbox;
         private System.Windows.Forms.TextBox profilePositionTextbox;
         private System.Windows.Forms.TextBox usernameTextBox;
+        private System.Windows.Forms.TextBox usernameTextBox1;
         private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox1;
 
         private System.Windows.Forms.TextBox profileNameTextbox;
 
@@ -1323,7 +1376,9 @@ namespace Bulofnaia.Forms
         private System.Windows.Forms.Label actionLabel;
         private System.Windows.Forms.Label authLabel;
         private System.Windows.Forms.Label usernameLabel;
+        private System.Windows.Forms.Label usernameLabel1;
         private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label passwordLabel1;
         private System.Windows.Forms.Label authErrorLabel;
 
         private System.Windows.Forms.TableLayoutPanel queueTable;

@@ -2,42 +2,29 @@
 {
     public class User
     {
-        private int _id;
-        private string _firstName, _lastName, _position;
-        
-        public User()
+	    public User()
         {
         }
 
-        public User(string firstName, string lastName, string position)
+        public User(string firstName, string lastName, string position, string username, string password)
         {
-            _firstName = firstName;
-            _lastName = lastName;
-            _position = position;
+            FirstName = firstName;
+            LastName = lastName;
+            Position = position;
+            Username = username;
+            Password = password;
         }
 
-        public int Id
-        {
-            get => _id;
-            set => _id = value;
-        }
+        public int Id { get; set; }
 
-        public string FirstName
-        {
-            get => _firstName;
-            set => _firstName = value;
-        }
+        public string FirstName { get; set; }
 
-        public string LastName
-        {
-            get => _lastName;
-            set => _lastName = value;
-        }
+        public string LastName { get; set; }
 
-        public string Position
-        {
-            get => _position;
-            set => _position = value;
-        }
+        public string Position { get; set; }
+
+        public string Username { get; set; }
+
+        public string Password { get; set; }
     }
 }

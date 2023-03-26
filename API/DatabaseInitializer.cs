@@ -38,10 +38,10 @@ namespace Bulofnaia.API
             UnitRepository.AddUnitSafe(new Unit("кв.м"));
             UnitRepository.AddUnitSafe(new Unit("куб.м"));
 
-            UserRepository.InsertUser(new User("Иван", "Иванов", "заведующий складом"));
-            UserRepository.InsertUser(new User("Александр", "Маслов", "кладовщик"));
-            UserRepository.InsertUser(new User("Пётр", "Васильев", "грузчик"));
-            UserRepository.InsertUser(new User("Владислав", "Цепеш", "фасовщик-упаковщик"));
+            UserRepository.InsertUser(new User("Иван", "Иванов", "заведующий складом", "ivan", "password"));
+            UserRepository.InsertUser(new User("Александр", "Маслов", "кладовщик", "alex", "password"));
+            UserRepository.InsertUser(new User("Пётр", "Васильев", "грузчик", "petr", "password"));
+            UserRepository.InsertUser(new User("Владислав", "Цепеш", "фасовщик-упаковщик", "vlad", "password"));
         }
 
         public static MySqlConnection OpenConnection()
@@ -180,6 +180,8 @@ namespace Bulofnaia.API
                            "first_name VARCHAR(255) NOT NULL," +
                            "last_name VARCHAR(255) NOT NULL," +
                            "position VARCHAR(255) NOT NULL" +
+                           "username VARCHAR(255) NOT NULL" +
+                           "password VARCHAR(255) NOT NULL" +
                            ")";
             
             return query;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using Bulofnaia.API.Repositories;
 using Bulofnaia.Forms.Controllers;
 
 namespace Bulofnaia.Forms
@@ -31,8 +32,15 @@ namespace Bulofnaia.Forms
 		        authErrorLabel.Visible = true;
 		        return;
 	        }
-	        Controls.Remove(authLayout);
-            Controls.Add(appLayout);
+
+	        if (UserRepository.Auth(usernameTextBox.Text, passwordTextBox.Text))
+	        {
+		        Controls.Remove(authLayout);
+		        Controls.Add(appLayout);
+		        return;
+	        }
+
+			authErrorLabel.Visible = true;
         }
 
 		private void newRequestPageButton_Click(object sender, EventArgs e)
